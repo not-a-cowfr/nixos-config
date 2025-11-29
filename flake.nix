@@ -53,8 +53,6 @@
       self,
       nixpkgs,
       home-manager,
-      nix-minecraft,
-      chaotic,
       ...
     }@inputs:
     let
@@ -80,10 +78,6 @@
           };
           modules = [
             ./hosts/${hostname}
-            inputs.nix-minecraft.nixosModules.minecraft-servers
-            chaotic.nixosModules.nyx-cache
-            chaotic.nixosModules.nyx-overlay
-            chaotic.nixosModules.nyx-registry
           ];
         };
 
@@ -98,7 +92,6 @@
           };
           modules = [
             ./home/${username}
-            inputs.chaotic.homeManagerModules.default
           ];
         };
     in
