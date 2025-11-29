@@ -78,6 +78,9 @@ echo "selected: $HOST"
 echo 'copying your hardware-configuration.nix'
 cp -f "$CURRENT_HW" "$ETC_DIR/hosts/$HOST/hardware-configuration.nix"
 
+echo 'deleting unnecessary files'
+rm $ETC_DIR/LICENSE $ETC_DIR/README.md $ETC_DIR/install.sh
+
 echo 'enabling flakes + home-manager if needed'
 mkdir -p /etc/nix
 if ! grep -q 'experimental-features' /etc/nix/nix.conf 2>/dev/null; then
