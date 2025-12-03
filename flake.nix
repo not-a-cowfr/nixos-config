@@ -41,8 +41,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    # equinix.url = "path:/home/andrew/Documents/GitHub/equinix";
-    equinix.url = "github:not-a-cowfr/equinix";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     # services
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";

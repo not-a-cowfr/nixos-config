@@ -12,7 +12,8 @@
     "${nhModules}/programs/go"
     "${nhModules}/programs/starship"
     "${nhModules}/programs/terminal"
-    "${nhModules}/programs/discord"
+    # "${nhModules}/programs/discord"
+    "${nhModules}/programs/spotify"
     "${nhModules}/programs/code-editor"
     inputs.chaotic.homeManagerModules.default
   ];
@@ -36,7 +37,6 @@
     prismlauncher
     razergenie
     steam-run
-    spotify
     inputs.zen-browser.packages."${pkgs.system}".twilight
     zoom-us
     audacity
