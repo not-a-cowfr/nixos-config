@@ -161,6 +161,7 @@
       "docker"
       "openrazer"
       "libvirtd"
+      "vboxusers"
     ];
     isNormalUser = true;
   };
@@ -196,6 +197,8 @@
   ];
 
   virtualisation = {
+    virtualbox.host.enable = true;
+    
     libvirtd = {
       enable = true;
       qemu = {
