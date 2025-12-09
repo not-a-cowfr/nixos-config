@@ -108,10 +108,7 @@
       python.symbol = " ";
       rlang.symbol = "󰟔 ";
       ruby.symbol = " ";
-      rust = {
-        symbol = "🦀 ";
-        detect_folders = [ "GitHub" ];
-      };
+      rust.symbol = "🦀 ";
       scala.symbol = " ";
       swift.symbol = " ";
       zig.symbol = " ";

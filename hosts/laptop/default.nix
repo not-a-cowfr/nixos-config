@@ -16,7 +16,10 @@
     inputs.chaotic.nixosModules.nyx-registry
   ];
 
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+  nixpkgs.overlays = [
+    inputs.nix-minecraft.overlay
+    inputs.rust-overlay.overlays.default
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
 
