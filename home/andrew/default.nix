@@ -9,7 +9,6 @@
     ../common
     "${nhModules}/desktop/kde"
     "${nhModules}/programs/git"
-    "${nhModules}/programs/go"
     "${nhModules}/programs/starship"
     "${nhModules}/programs/terminal"
     # "${nhModules}/programs/discord"
@@ -49,6 +48,7 @@
     zig
     nushell
     nasm
+    go
 
     # cli tools
     cargo-flamegraph
