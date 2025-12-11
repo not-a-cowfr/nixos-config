@@ -32,7 +32,7 @@
     };
 
     # addons
-    chaotic.url = "github:chaotic-cx/nyx";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
     # apps
     zen-browser = {

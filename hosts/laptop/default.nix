@@ -11,17 +11,15 @@
     "${nixosModules}/desktop/kde"
     "${nixosModules}/programs/steam"
     inputs.nix-minecraft.nixosModules.minecraft-servers
-    inputs.chaotic.nixosModules.nyx-cache
-    inputs.chaotic.nixosModules.nyx-overlay
-    inputs.chaotic.nixosModules.nyx-registry
   ];
 
   nixpkgs.overlays = [
     inputs.nix-minecraft.overlay
     inputs.rust-overlay.overlays.default
+    inputs.nix-cachyos-kernel.overlay
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-rc;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
   networking.firewall = {
     allowedTCPPorts = [

@@ -14,7 +14,6 @@
     # "${nhModules}/programs/discord"
     "${nhModules}/programs/spotify"
     "${nhModules}/programs/code-editor"
-    inputs.chaotic.homeManagerModules.default
   ];
 
   news.display = "silent";
