@@ -90,7 +90,7 @@
     # kernelModules = [ "v4l2loopback" ];
     # extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     # extraModprobeConfig = ''
-      # options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+    # options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
     # '';
   };
 
@@ -194,11 +194,12 @@
   systemd.tmpfiles.rules = [
     "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware"
     # "f /dev/shm/looking-glass 0660 ${user} qemu-libvirtd -"
+    "d /etc/nixos 0774 root wheel - -"
   ];
 
   virtualisation = {
     virtualbox.host.enable = true;
-    
+
     libvirtd = {
       enable = true;
       qemu = {
