@@ -13,7 +13,7 @@
     ffmpegthumbs
     # kate
     khelpcenter
-    konsole
+    # konsole # sometimes ghosty service gets reset when switching home-manager so this is a backup
     krdp
     plasma-browser-integration
   ];
