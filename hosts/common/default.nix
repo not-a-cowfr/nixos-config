@@ -25,6 +25,8 @@
   );
 
   nix = {
+    package = pkgs.nixVersions.latest;
+
     settings.trusted-users = [
       "root"
       "@wheel"

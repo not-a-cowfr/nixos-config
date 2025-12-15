@@ -43,6 +43,10 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
+    # needs to be in this format for submodules to work
+    # using my fork because new branch doesnt have flake support and legacy branch has a bug
+    millennium.url = "git+https://github.com/not-a-cowfr/Millennium.git";
+
     # services
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 

@@ -33,5 +33,5 @@ sudo nix-shell -p curl git --run "curl -fsSL https://raw.githubusercontent.com/n
 - [ ] try out switching from ext4 to btrfs
 - [ ] make a niri config
 - [ ] convert my equicord json config to nixcord nix config
-- [ ] get milennium for steam working
+- [x] get milennium for steam working
 - [ ] sort programs stuff into categories that are easy to enable/disable different parts
