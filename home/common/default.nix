@@ -7,11 +7,10 @@
 }:
 {
   imports = [
-    "${nhModules}/programs/bat"
-    "${nhModules}/programs/fastfetch"
-    "${nhModules}/programs/fzf"
     "${nhModules}/programs/gpg"
-    "${nhModules}/services/flatpak"
+    "${nhModules}/programs/flatpak"
+    "${nhModules}/programs/cli/fzf.nix"
+    "${nhModules}/programs/cli/fastfetch.nix"
   ];
 
   nix.package = pkgs.nix;
@@ -39,14 +38,10 @@
     jq
     ripgrep
     curl
-    nixpkgs-fmt
-    tree
     zip
     unzip
 
     openrazer-daemon
-    openssl
-    pkg-config
     libgbm
   ];
 }

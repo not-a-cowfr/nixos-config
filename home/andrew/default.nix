@@ -2,19 +2,29 @@
   nhModules,
   pkgs,
   inputs,
-  config,
+  configFile,
   ...
 }:
 {
   imports = [
     ../common
-    "${nhModules}/desktop/${config.desktop.environment}"
+    "${nhModules}/desktop/${configFile.desktop.environment}"
+    "${nhModules}/programs/browser/zen.nix"
+    "${nhModules}/programs/cli/bat.nix"
+    "${nhModules}/programs/cli/direnv.nix"
+    "${nhModules}/programs/cli/starship.nix"
     "${nhModules}/programs/git"
-    "${nhModules}/programs/starship"
-    "${nhModules}/programs/terminal"
-    # "${nhModules}/programs/discord"
-    "${nhModules}/programs/spotify"
-    "${nhModules}/programs/code-editor"
+    "${nhModules}/programs/ide/vscodium.nix"
+    "${nhModules}/programs/ide/vim.nix"
+    "${nhModules}/programs/music/spicetify.nix"
+    "${nhModules}/programs/programming/languages/rust.nix"
+    "${nhModules}/programs/programming/languages/typescript.nix"
+    "${nhModules}/programs/programming/languages/python.nix"
+    "${nhModules}/programs/programming/github.nix"
+    "${nhModules}/programs/razer"
+    "${nhModules}/programs/shell/nushell"
+    "${nhModules}/programs/steam"
+    "${nhModules}/programs/terminal/ghostty.nix"
   ];
 
   news.display = "silent";
@@ -24,56 +34,13 @@
   services.kdeconnect.enable = true;
 
   home.packages = with pkgs; [
-    # dev apps
-    github-desktop
-    gparted
-    unetbootin
-    jetbrains.idea-ultimate
-
-    # regular apps
     legcord
-    polychromatic
     prismlauncher
-    razergenie
-    steam-run
-    inputs.zen-browser.packages."${pkgs.system}".twilight
     zoom-us
-    audacity
-    qemu
-
-    # languages
-    bun
-    python3
-    rustup
-    zig
-    nushell
-    nasm
-    go
-
-    # cli tools
-    cargo-flamegraph
-    dioxus-cli
-    docker
-    docker-compose
-    fnm
-    mongodb
-    mongosh
-    nginx
-    nodePackages.pnpm
     nixfmt
-    nushellPlugins.highlight
-    rcon-cli
-    rojo
-    uv
-    valkey
-    vim
-    dig
-    direnv
-
-    # deps
-    steamcmd
 
     # cybersec class stuff
+    # todo: remove after wednesday
     sherlock
     nmap
     wireshark-qt

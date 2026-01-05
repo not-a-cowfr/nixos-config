@@ -66,8 +66,8 @@
     let
       inherit (self) outputs;
 
-      config = builtins.fromTOML (builtins.readFile ./config.toml);
-      hostname = config.computer.host;
+      configFile = builtins.fromTOML (builtins.readFile ./config.toml);
+      hostname = configFile.computer.host;
 
       system = "x86_64-linux";
 
@@ -83,7 +83,9 @@
         (mkUser "andrew" "Andrew Gielow")
       ];
 
-      enabledUsers = nixpkgs.lib.filterAttrs (name: _: builtins.elem name config.computer.users) allUsers;
+      enabledUsers = nixpkgs.lib.filterAttrs (
+        name: _: builtins.elem name configFile.computer.users
+      ) allUsers;
 
       mkNixosConfiguration =
         hostname:
@@ -94,7 +96,7 @@
               outputs
               hostname
               enabledUsers
-              config
+              configFile
               ;
             nixosModules = ./modules/nixos;
           };
@@ -106,7 +108,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { inherit system; };
           extraSpecialArgs = {
-            inherit inputs outputs config;
+            inherit inputs outputs configFile;
             userConfig = enabledUsers.${username};
             nhModules = "${self}/modules/home-manager";
           };
@@ -124,7 +126,7 @@
         map (username: {
           name = "${username}@${hostname}";
           value = mkHomeConfiguration username hostname;
-        }) config.computer.users
+        }) configFile.computer.users
       );
 
       overlays = import ./overlays { inherit inputs; };
