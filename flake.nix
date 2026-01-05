@@ -94,6 +94,7 @@
               outputs
               hostname
               enabledUsers
+              config
               ;
             nixosModules = ./modules/nixos;
           };
@@ -105,7 +106,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { inherit system; };
           extraSpecialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs config;
             userConfig = enabledUsers.${username};
             nhModules = "${self}/modules/home-manager";
           };

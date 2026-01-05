@@ -1,3 +1,6 @@
 [computer]
 host = "laptop"
 users = ["andrew"]
+
+[desktop]
+environment = "plasma"

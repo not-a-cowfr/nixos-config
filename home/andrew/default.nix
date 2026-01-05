@@ -2,12 +2,13 @@
   nhModules,
   pkgs,
   inputs,
+  config,
   ...
 }:
 {
   imports = [
     ../common
-    "${nhModules}/desktop/kde"
+    "${nhModules}/desktop/${config.desktop.environment}"
     "${nhModules}/programs/git"
     "${nhModules}/programs/starship"
     "${nhModules}/programs/terminal"

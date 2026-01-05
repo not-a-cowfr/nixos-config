@@ -2,13 +2,14 @@
   inputs,
   pkgs,
   nixosModules,
+  config,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
     ../common
-    "${nixosModules}/desktop/kde"
+    "${nixosModules}/desktop/${config.desktop.environment}"
     "${nixosModules}/programs/steam"
     inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
