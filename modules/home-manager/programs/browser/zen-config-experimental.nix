@@ -97,7 +97,7 @@
           "browser.bookmarks.showMobileBookmarks" = false;
           "browser.contentblocking.category" = "standard";
           "browser.ctrlTab.sortByRecentlyUsed" = true;
-          "browser.download.lastDir" = /home/andrew/Downloads;
+          "browser.download.lastDir" = "${config.home.homeDirectory}/Downloads";
           "browser.download.panel.shown" = true;
           "browser.download.viewableInternally.typeWasRegistered.avif" = true;
           "browser.download.viewableInternally.typeWasRegistered.jxl" = true;
