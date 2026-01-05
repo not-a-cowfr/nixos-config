@@ -163,15 +163,6 @@ in
 
     overrideConfig = true;
 
-    panels = [
-      (import ./panels/windows-like.nix)
-      # {
-      #   location = "top";
-      #   height = 26;
-      #   widgets = [ "org.kde.plasma.appmenu" ];
-      # }
-    ];
-
     powerdevil = {
       AC = {
         autoSuspend.action = "nothing";

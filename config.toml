@@ -1,0 +1,7 @@
+[computer]
+host = "laptop"    # required
+users = ["andrew"]
+
+[desktop]
+environment = "plasma"            # required
+modules = ["panels/windows-like"]

@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   programs.alacritty = {
     enable = true;
@@ -24,7 +24,7 @@
       terminal = {
         osc52 = "CopyPaste";
         shell = {
-          program = "/home/andrew/.nix-profile/bin/nu";
+          program = "${config.home.homeDirectory}/.nix-profile/bin/nu";
         };
       };
     };

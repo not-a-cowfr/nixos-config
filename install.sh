@@ -5,6 +5,7 @@ REPO_URL="https://github.com/not-a-cowfr/nixos-config.git"
 REPO_DIR="/tmp/nixos-config"
 ETC_DIR="/etc/nixos"
 BACKUP_DIR="/etc/nixos_config_backup"
+CONFIG_FILE="$ETC_DIR/config.toml"
 
 echo 'cloning repo'
 rm -rf "$REPO_DIR"
@@ -27,57 +28,6 @@ find "$ETC_DIR" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
 echo 'copying repo to $ETC_DIR'
 cp -r "$REPO_DIR"/* "$ETC_DIR"/
 
-echo 'finding available home configs'
-mapfile -t USERS < <(find "$ETC_DIR/home" -maxdepth 1 -mindepth 1 -type d -printf "%f\n" | grep -v "^common$")
-
-if [ ${#USERS[@]} -eq 0 ]; then
-    echo "no users found in $ETC_DIR/home"
-    exit 1
-fi
-
-echo 'available users:'
-for i in "${!USERS[@]}"; do
-    echo "  [$i] ${USERS[$i]}"
-done
-
-while true; do
-    read -p "select user by its number: " USER_INDEX </dev/tty
-    if [[ "$USER_INDEX" =~ ^[0-9]+$ ]] && [ "$USER_INDEX" -lt "${#USERS[@]}" ]; then
-        break
-    fi
-    echo "invalid selection"
-done
-
-USER="${USERS[$USER_INDEX]}"
-echo "selected: $USER"
-
-echo 'finding available host configs'
-mapfile -t HOSTS < <(find "$ETC_DIR/hosts" -maxdepth 1 -mindepth 1 -type d -printf "%f\n" | grep -v "^common$")
-
-if [ ${#HOSTS[@]} -eq 0 ]; then
-    echo "no hosts found in $ETC_DIR/hosts"
-    exit 1
-fi
-
-echo 'available hosts:'
-for i in "${!HOSTS[@]}"; do
-    echo "  [$i] ${HOSTS[$i]}"
-done
-
-while true; do
-    read -p "select host by its number: " HOST_INDEX </dev/tty
-    if [[ "$HOST_INDEX" =~ ^[0-9]+$ ]] && [ "$HOST_INDEX" -lt "${#HOSTS[@]}" ]; then
-        break
-    fi
-    echo "invalid selection"
-done
-
-HOST="${HOSTS[$HOST_INDEX]}"
-echo "selected: $HOST"
-
-echo 'copying your hardware-configuration.nix'
-cp -f "$CURRENT_HW" "$ETC_DIR/hosts/$HOST/hardware-configuration.nix"
-
 echo 'deleting unnecessary files'
 rm $ETC_DIR/LICENSE $ETC_DIR/README.md $ETC_DIR/install.sh
 
@@ -87,8 +37,27 @@ if ! grep -q 'experimental-features' /etc/nix/nix.conf 2>/dev/null; then
     echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
 fi
 
+echo -e "edit the config to match what you like\n"
+echo -e "available hosts:\n$(find "$ETC_DIR/hosts" -maxdepth 1 -mindepth 1 -type d -printf "%f\n" | grep -v common)\n"
+echo -e "available users:\n$(find "$ETC_DIR/home" -maxdepth 1 -mindepth 1 -type d -printf "%f\n" | grep -v common)\n"
+echo -e "available desktop environments:\n$(find $ETC_DIR/modules/nixos/desktop -maxdepth 1 -mindepth 1 -type d -printf "%f\n")\n"
+sleep 1
+vim $CONFIG_FILE
+
+HOST=$(tq -f $CONFIG_FILE -r 'computer.host')
+USERS_JSON=$(tq -f $CONFIG_FILE 'computer.users')
+readarray -t USERS < <(echo "$USERS_JSON" | jq -r '.[]')
+
+echo "Selected host: $HOST"
+echo "Selected users: ${USERS[*]}"
+
+echo 'copying your hardware-configuration.nix'
+cp -f "$CURRENT_HW" "$ETC_DIR/hosts/$HOST/hardware-configuration.nix"
+
 echo 'rebuilding nixos'
 nixos-rebuild switch --flake "$ETC_DIR#$HOST"
 
-echo 'running home-manager switch'
-home-manager switch --flake "$ETC_DIR#$USER@$HOST"
+for USER in "${USERS[@]}"; do
+    echo "running home-manager switch for $USER@$HOST"
+    home-manager switch --flake "$ETC_DIR#$USER@$HOST"
+done

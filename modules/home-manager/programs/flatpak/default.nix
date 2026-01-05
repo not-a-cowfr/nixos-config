@@ -10,12 +10,13 @@
   config = {
     services.flatpak = {
       enable = true;
+      uninstallUnmanaged = true;
+      update.auto.enable = false;
+
       packages = [
         "org.vinegarhq.Sober"
         "org.vinegarhq.Vinegar"
       ];
-      uninstallUnmanaged = true;
-      update.auto.enable = false;
     };
 
     home.packages = [ pkgs.flatpak ];

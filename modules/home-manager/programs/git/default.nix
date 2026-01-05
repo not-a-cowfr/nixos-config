@@ -1,14 +1,10 @@
-{ userConfig, ... }:
+{ pkgs, lib, ... }:
 {
   programs.git = {
     enable = true;
 
-    # signing = {
-    #   key = userConfig.gitKey;
-    #   signByDefault = true;
-    # };
-
     settings = {
+      # todo: dont hardcode user info
       user = {
         name = "not a cow";
         email = "104355555+not-a-cowfr@users.noreply.github.com";
