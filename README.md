@@ -26,7 +26,6 @@ sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://raw.githubusercon
 
 - [ ] comment stuff more to make it readable for other people
 - [x] add script that will set up this as your config, with options to select which home and host config to use
-  - [ ] script needs to like update flake.nix based on chosen host and home configs idk this a problem for future me, right now its not a problem since theres only one user and host though
 
 ### for config
 
@@ -34,4 +33,4 @@ sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://raw.githubusercon
 - [ ] make a niri config
 - [ ] convert my equicord json config to nixcord nix config
 - [x] get milennium for steam working
-- [ ] sort programs stuff into categories that are easy to enable/disable different parts
+- [x] sort programs stuff into categories that are easy to enable/disable different parts
