@@ -17,7 +17,7 @@ I hope that this repo will be readable enough for someone to use as reference wh
 # Installing
 
 ```bash
-sudo nix-shell -p curl git --run "curl -fsSL https://raw.githubusercontent.com/not-a-cowfr/nixos-config/refs/heads/main/install.sh | bash"
+sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://raw.githubusercontent.com/not-a-cowfr/nixos-config/refs/heads/main/install.sh | bash"
 ```
 
 # TODO
