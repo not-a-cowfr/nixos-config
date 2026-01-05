@@ -13,19 +13,19 @@ git clone "$REPO_URL" "$REPO_DIR"
 
 echo 'copying your current hardware-configuration.nix'
 CURRENT_HW=$(mktemp)
-find $ETC_DIR -maxdepth 1 -name 'hardware-configuration.nix' -exec cp '{}' "$CURRENT_HW" \;
+find $ETC_DIR -name 'hardware-configuration.nix' -exec cp '{}' "$CURRENT_HW" \;
 
 if [ ! -f "$CURRENT_HW" ]; then
     echo 'did not find hardware-configuration.nix in $ETC_DIR'
     exit 1
 fi
 
-echo 'deleting $ETC_DIR (saving your old config to $BACKUP_DIR)'
+echo -e 'deleting $ETC_DIR (saving your old config to $BACKUP_DIR)'
 mkdir -p $BACKUP_DIR
 cp -r $ETC_DIR/* "$BACKUP_DIR" 2>/dev/null || true
 find "$ETC_DIR" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
 
-echo 'copying repo to $ETC_DIR'
+echo -e 'copying repo to $ETC_DIR'
 cp -r "$REPO_DIR"/* "$ETC_DIR"/
 
 echo 'deleting unnecessary files'
@@ -42,7 +42,7 @@ echo -e "available hosts:\n$(find "$ETC_DIR/hosts" -maxdepth 1 -mindepth 1 -type
 echo -e "available users:\n$(find "$ETC_DIR/home" -maxdepth 1 -mindepth 1 -type d -printf "%f\n" | grep -v common)\n"
 echo -e "available desktop environments:\n$(find $ETC_DIR/modules/nixos/desktop -maxdepth 1 -mindepth 1 -type d -printf "%f\n")\n"
 sleep 1
-vim $CONFIG_FILE
+vim $CONFIG_FILE </dev/tty >/dev/tty 2>/dev/tty
 
 HOST=$(tq -f $CONFIG_FILE -r 'computer.host')
 USERS_JSON=$(tq -f $CONFIG_FILE 'computer.users')
@@ -52,7 +52,7 @@ echo "Selected host: $HOST"
 echo "Selected users: ${USERS[*]}"
 
 echo 'copying your hardware-configuration.nix'
-cp -f "$CURRENT_HW" "$ETC_DIR/hosts/$HOST/hardware-configuration.nix"
+cp -f $CURRENT_HW "$ETC_DIR/hosts/$HOST/hardware-configuration.nix"
 
 echo 'rebuilding nixos'
 nixos-rebuild switch --flake "$ETC_DIR#$HOST"
