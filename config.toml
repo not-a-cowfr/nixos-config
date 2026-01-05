@@ -1,35 +1,7 @@
 [computer]
-# required
-host = "laptop"
+host = "laptop"    # required
 users = ["andrew"]
 
 [desktop]
-# required
-environment = "plasma"
-modules = ["panels:windows-like"]
-
-# idk about this since its something youd probably want user specific and would just be easier to go into the actual config
-# since you would have to check what things you can enable anyway this would probably be more effort for no reason
-
-# [software]
-# browser = ["zen"]
-# music = ["spotify"]
-# games = ["prism", "steam", "roblox"]
-# chat = ["legcord", "zoom"]
-# cli = ["bat", "direnv", "fastfetch", "fzf", "starship"]
-
-# terminal = ["ghostty"]
-# shell = "nushell"
-
-# [software.addons]
-# steam.millenium = true
-# spotify.spicetify = true
-
-# [programming]
-# ide = ["vscodium", "vim"]
-# languages = ["rust", "typescript", "python"]
-# tools = ["git", "github"]
-
-# [services]
-# # eg. "fabric/1_20_1/create"
-# minecraft = []
+environment = "plasma"            # required
+modules = ["panels/windows-like"]

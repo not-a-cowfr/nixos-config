@@ -3,15 +3,20 @@
   userConfig,
   pkgs,
   nhModules,
+  configFile,
   ...
 }:
 {
   imports = [
+    "${nhModules}/desktop/${configFile.desktop.environment}"
     "${nhModules}/programs/gpg"
     "${nhModules}/programs/flatpak"
     "${nhModules}/programs/cli/fzf.nix"
     "${nhModules}/programs/cli/fastfetch.nix"
-  ];
+  ]
+  ++ map (
+    name: "${nhModules}/desktop/${configFile.desktop.environment}/${name}"
+  ) configFile.desktop.modules or [ ];
 
   nix.package = pkgs.nix;
 
