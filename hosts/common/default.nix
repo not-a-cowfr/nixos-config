@@ -3,7 +3,7 @@
   outputs,
   lib,
   config,
-  userConfig,
+  enabledUsers,
   pkgs,
   hostname,
   ...
@@ -155,33 +155,35 @@
 
   services.flatpak.enable = true;
 
-  users.users.${userConfig.name} = {
-    description = userConfig.fullName;
+  users.users = lib.mapAttrs (_: user: {
+    isNormalUser = true;
+    description = user.fullName;
     extraGroups = [
       "networkmanager"
+      # todo maybe make some changes to config.toml format to define which users get wheel and which dont
       "wheel"
       "docker"
       "openrazer"
       "libvirtd"
       "vboxusers"
     ];
-    isNormalUser = true;
-  };
+  }) enabledUsers;
 
   # user avatar
-  # system.activationScripts.script.text = ''
-  #   mkdir -p /var/lib/AccountsService/{icons,users}
-  #   cp ${userConfig.avatar} /var/lib/AccountsService/icons/${userConfig.name}
+  # system.activationScripts.userAvatars.text =
+  # lib.concatStringsSep "\n" (
+  #   lib.mapAttrsToList (_: user: ''
+  #     mkdir -p /var/lib/AccountsService/{icons,users}
+  #     cp ${user.avatar} /var/lib/AccountsService/icons/${user.name}
 
-  #   touch /var/lib/AccountsService/users/${userConfig.name}
-
-  #   if ! grep -q "^Icon=" /var/lib/AccountsService/users/${userConfig.name}; then
-  #     if ! grep -q "^\[User\]" /var/lib/AccountsService/users/${userConfig.name}; then
-  #       echo "[User]" >> /var/lib/AccountsService/users/${userConfig.name}
+  #     touch /var/lib/AccountsService/users/${user.name}
+  #     if ! grep -q "^Icon=" /var/lib/AccountsService/users/${user.name}; then
+  #       echo "[User]" >> /var/lib/AccountsService/users/${user.name}
+  #       echo "Icon=/var/lib/AccountsService/icons/${user.name}" \
+  #         >> /var/lib/AccountsService/users/${user.name}
   #     fi
-  #     echo "Icon=/var/lib/AccountsService/icons/${userConfig.name}" >> /var/lib/AccountsService/users/${userConfig.name}
-  #   fi
-  # '';
+  #   '') enabledUsers
+  # );
 
   # security.sudo.wheelNeedsPassword = false;
 

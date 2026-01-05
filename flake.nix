@@ -66,36 +66,47 @@
     let
       inherit (self) outputs;
 
-      users = {
-        andrew = {
-          # avatar = ./files/avatar/face;
-          fullName = "Andrew Gielow";
-          # gitKey = "";
-          name = "andrew";
+      config = builtins.fromTOML (builtins.readFile ./config.toml);
+      hostname = config.computer.host;
+
+      system = "x86_64-linux";
+
+      mkUser = username: fullName: {
+        ${username} = {
+          name = username;
+          inherit fullName;
+          avatar = ./assets/avatars/${username};
         };
       };
 
+      allUsers = nixpkgs.lib.foldl' nixpkgs.lib.recursiveUpdate { } [
+        (mkUser "andrew" "Andrew Gielow")
+      ];
+
+      enabledUsers = nixpkgs.lib.filterAttrs (name: _: builtins.elem name config.computer.users) allUsers;
+
       mkNixosConfiguration =
-        hostname: username:
+        hostname:
         nixpkgs.lib.nixosSystem {
-          # system = "x86_64-linux";
           specialArgs = {
-            inherit inputs outputs hostname;
-            userConfig = users.${username};
+            inherit
+              inputs
+              outputs
+              hostname
+              enabledUsers
+              ;
             nixosModules = ./modules/nixos;
           };
-          modules = [
-            ./hosts/${hostname}
-          ];
+          modules = [ ./hosts/${hostname} ];
         };
 
       mkHomeConfiguration =
-        system: username: hostname:
+        username: hostname:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { inherit system; };
           extraSpecialArgs = {
             inherit inputs outputs;
-            userConfig = users.${username};
+            userConfig = enabledUsers.${username};
             nhModules = "${self}/modules/home-manager";
           };
           modules = [
@@ -105,12 +116,15 @@
     in
     {
       nixosConfigurations = {
-        laptop = mkNixosConfiguration "laptop" "andrew";
+        ${hostname} = mkNixosConfiguration hostname;
       };
 
-      homeConfigurations = {
-        "andrew@laptop" = mkHomeConfiguration "x86_64-linux" "andrew" "laptop";
-      };
+      homeConfigurations = nixpkgs.lib.listToAttrs (
+        map (username: {
+          name = "${username}@${hostname}";
+          value = mkHomeConfiguration username hostname;
+        }) config.computer.users
+      );
 
       overlays = import ./overlays { inherit inputs; };
     };
