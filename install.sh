@@ -15,7 +15,7 @@ echo "copying your current hardware-configuration.nix"
 CURRENT_HW=$(mktemp)
 find $ETC_DIR -name "hardware-configuration.nix" -exec cp "{}" "$CURRENT_HW" \;
 
-if [ ! -f "$CURRENT_HW" ]; then
+if [ ! -s "$CURRENT_HW" ]; then
     echo "did not find hardware-configuration.nix in $ETC_DIR"
     exit 1
 fi
