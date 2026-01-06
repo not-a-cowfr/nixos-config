@@ -26,7 +26,8 @@ cp -r $ETC_DIR/* $BACKUP_DIR
 rm -rf $ETC_DIR
 
 echo "copying repo to $ETC_DIR"
-cp -r "$REPO_DIR"/* "$ETC_DIR"/
+mkdir $ETC_DIR
+cp -r $REPO_DIR/* $ETC_DIR/
 
 echo "deleting unnecessary files"
 rm $ETC_DIR/LICENSE $ETC_DIR/README.md $ETC_DIR/install.sh
