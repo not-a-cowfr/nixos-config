@@ -7,33 +7,33 @@ ETC_DIR="/etc/nixos"
 BACKUP_DIR="/etc/nixos_config_backup"
 CONFIG_FILE="$ETC_DIR/config.toml"
 
-echo 'cloning repo'
+echo "cloning repo"
 rm -rf "$REPO_DIR"
 git clone "$REPO_URL" "$REPO_DIR"
 
-echo 'copying your current hardware-configuration.nix'
+echo "copying your current hardware-configuration.nix"
 CURRENT_HW=$(mktemp)
-find $ETC_DIR -name 'hardware-configuration.nix' -exec cp '{}' "$CURRENT_HW" \;
+find $ETC_DIR -name "hardware-configuration.nix" -exec cp "{}" "$CURRENT_HW" \;
 
 if [ ! -f "$CURRENT_HW" ]; then
-    echo 'did not find hardware-configuration.nix in $ETC_DIR'
+    echo "did not find hardware-configuration.nix in $ETC_DIR"
     exit 1
 fi
 
-echo -e 'deleting $ETC_DIR (saving your old config to $BACKUP_DIR)'
+echo "deleting $ETC_DIR (saving your old config to $BACKUP_DIR)"
 mkdir -p $BACKUP_DIR
-cp -r $ETC_DIR/* "$BACKUP_DIR" 2>/dev/null || true
-find "$ETC_DIR" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+cp -r $ETC_DIR/* $BACKUP_DIR
+rm -rf $ETC_DIR
 
-echo -e 'copying repo to $ETC_DIR'
+echo "copying repo to $ETC_DIR"
 cp -r "$REPO_DIR"/* "$ETC_DIR"/
 
-echo 'deleting unnecessary files'
+echo "deleting unnecessary files"
 rm $ETC_DIR/LICENSE $ETC_DIR/README.md $ETC_DIR/install.sh
 
-echo 'enabling flakes + home-manager if needed'
+echo "enabling flakes + home-manager if needed"
 mkdir -p /etc/nix
-if ! grep -q 'experimental-features' /etc/nix/nix.conf 2>/dev/null; then
+if ! grep -q "experimental-features" /etc/nix/nix.conf 2>/dev/null; then
     echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
 fi
 
@@ -44,17 +44,17 @@ echo -e "available desktop environments:\n$(find $ETC_DIR/modules/nixos/desktop 
 sleep 1
 vim $CONFIG_FILE </dev/tty >/dev/tty 2>/dev/tty
 
-HOST=$(tq -f $CONFIG_FILE -r 'computer.host')
-USERS_JSON=$(tq -f $CONFIG_FILE 'computer.users')
-readarray -t USERS < <(echo "$USERS_JSON" | jq -r '.[]')
+HOST=$(tq -f $CONFIG_FILE -r "computer.host")
+USERS_JSON=$(tq -f $CONFIG_FILE "computer.users")
+readarray -t USERS < <(echo "$USERS_JSON" | jq -r ".[]")
 
 echo "Selected host: $HOST"
 echo "Selected users: ${USERS[*]}"
 
-echo 'copying your hardware-configuration.nix'
+echo "copying your hardware-configuration.nix"
 cp -f $CURRENT_HW "$ETC_DIR/hosts/$HOST/hardware-configuration.nix"
 
-echo 'rebuilding nixos'
+echo "rebuilding nixos"
 nixos-rebuild switch --flake "$ETC_DIR#$HOST"
 
 for USER in "${USERS[@]}"; do
