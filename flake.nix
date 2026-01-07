@@ -50,8 +50,8 @@
     # services
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

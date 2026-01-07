@@ -11,7 +11,9 @@
     ../common
     "${nixosModules}/desktop/${configFile.desktop.environment}"
     "${nixosModules}/programs/steam"
+    "${nixosModules}/services/disko/btrfs_with_windows"
     inputs.nix-minecraft.nixosModules.minecraft-servers
+    inputs.disko.nixosModules.default
   ];
 
   nixpkgs.overlays = [
