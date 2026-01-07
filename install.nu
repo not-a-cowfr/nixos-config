@@ -12,7 +12,7 @@ git clone $REPO_URL $REPO_DIR
 
 print "copying your current hardware-configuration.nix"
 let current_hw = mktemp -d
-let hw_files = ls $"($ETC_DIR)/*" | where name == "hardware-configuration.nix" | get path
+let hw_files = ls $"($ETC_DIR)/**/*" | where name == "hardware-configuration.nix" | get path
 if ($hw_files | length) == 0 { error make { msg: "did not find hardware-configuration.nix in $ETC_DIR" } }
 cp ($hw_files.0) $current_hw
 
