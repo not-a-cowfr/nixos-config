@@ -1,7 +1,7 @@
 # Organization
 
-| path        | purpose                    |
-|-------------|----------------------------|
-| `desktop/`  | DE/WM configs + wallpapers |
-| `programs/` | system-wide programs       |
-| `services/` | startup services           |
+| path        | purpose              |
+| ----------- | -------------------- |
+| `desktop/`  | DE/WM configs        |
+| `programs/` | system-wide programs |
+| `services/` | startup services     |
