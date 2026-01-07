@@ -6,9 +6,15 @@
   enabledUsers,
   pkgs,
   hostname,
+  configFile,
   ...
 }:
 {
+  # todo: create ext4 config and just do "${nixosModules}/services/disko/${configFile.filesystem.type}.nix"
+  imports = lib.mkIf (configFile.filesystem.type == "btrfs") [
+    "${nixosModules}/services/disko/btrfs.nix"
+  ];
+
   nixpkgs = {
     overlays = [
       outputs.overlays.stable-packages

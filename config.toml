@@ -5,3 +5,6 @@ users = ["andrew"]
 [desktop]
 environment = "plasma"            # required
 modules = ["panels/windows-like"]
+
+[filesystem]
+type = "btrfs" # remove or change to ext4 for ext4
