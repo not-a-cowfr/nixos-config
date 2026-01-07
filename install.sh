@@ -32,7 +32,7 @@ cp -r $REPO_DIR/* $ETC_DIR/
 echo "deleting unnecessary files"
 rm $ETC_DIR/LICENSE $ETC_DIR/README.md $ETC_DIR/install.sh
 
-echo "enabling flakes + home-manager if needed"
+echo "enabling flakes if needed"
 mkdir -p /etc/nix
 if ! grep -q "experimental-features" /etc/nix/nix.conf 2>/dev/null; then
     echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf

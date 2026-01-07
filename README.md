@@ -21,8 +21,16 @@ thats why im keeping to system-wide configurations like desktop environment, hos
 
 # Installing
 
+For existing systems
+
 ```bash
 sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://not-a-cowfr.github.io/nixos-config/install.sh | bash"
+```
+
+For initial NixOS install
+
+```bash
+sudo nix-shell -p curl git vim nushell --run "curl -fsSL https://not-a-cowfr.github.io/nixos-config/install-clean.sh | bash"
 ```
 
 # TODO
@@ -31,6 +39,7 @@ sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://not-a-cowfr.githu
 
 - [ ] comment stuff more to make it readable for other people
 - [x] add script that will set up this as your config, with options to select which home and host config to use
+- [ ] maybe rewrite install scripts in nushell cus thats easier for me and i can just add nushell to the nix shell packages in the command
 
 ### for config
 
