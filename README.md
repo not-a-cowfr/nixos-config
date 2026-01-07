@@ -24,13 +24,13 @@ thats why im keeping to system-wide configurations like desktop environment, hos
 For existing systems
 
 ```bash
-sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://not-a-cowfr.github.io/nixos-config/install.sh | bash"
+sudo nix-shell -p curl git vim nushell --run "curl -fsSL https://not-a-cowfr.github.io/nixos-config/install.nu | nu"
 ```
 
 For initial NixOS install
 
 ```bash
-sudo nix-shell -p curl git vim nushell --run "curl -fsSL https://not-a-cowfr.github.io/nixos-config/install-clean.sh | bash"
+sudo nix-shell -p curl git vim nushell --run "curl -fsSL https://not-a-cowfr.github.io/nixos-config/install-clean.nu | nu"
 ```
 
 # TODO
