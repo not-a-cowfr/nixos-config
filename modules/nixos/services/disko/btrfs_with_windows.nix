@@ -1,12 +1,9 @@
-{ lib, ... }:
-let
-  disk = lib.strings.trim (builtins.readFile ./disk.txt);
-in
+{ configFile, ... }:
 {
   disko.devices = {
     disk.main = {
       type = "disk";
-      device = disk;
+      device = configFile.computer.disk;
 
       content = {
         type = "gpt";

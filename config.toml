@@ -1,6 +1,7 @@
 [computer]
 host = "laptop"    # required
 users = ["andrew"]
+disk = "nvme0n1"   # required if using this config to install nixos
 
 [desktop]
 environment = "plasma"            # required
