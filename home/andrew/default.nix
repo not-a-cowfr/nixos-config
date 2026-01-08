@@ -36,16 +36,6 @@
     prismlauncher
     zoom-us
     nixfmt
-
-    # cybersec class stuff
-    # todo: remove after wednesday
-    sherlock
-    nmap
-    wireshark-qt
-    tcpdump
-    stegseek
-    exiftool
-    foremost
   ];
 
   home.stateVersion = "25.11";
