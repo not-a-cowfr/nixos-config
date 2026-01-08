@@ -9,6 +9,10 @@
     inputs.zen-browser.homeModules.twilight
   ];
 
+  home.sessionVariables = {
+    BROWSER = "zen";
+  };
+
   xdg.mimeApps =
     let
       associations = builtins.listToAttrs (
