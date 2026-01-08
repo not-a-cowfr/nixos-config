@@ -18,7 +18,6 @@
 
   nixpkgs.overlays = [
     inputs.nix-minecraft.overlay
-    inputs.rust-overlay.overlays.default
     inputs.nix-cachyos-kernel.overlay
     inputs.millennium.overlays.default
   ];
