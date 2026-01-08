@@ -8,7 +8,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common
     "${nixosModules}/desktop/${configFile.desktop.environment}"
     "${nixosModules}/programs/steam"
     "${nixosModules}/services/disko/btrfs_with_windows.nix"

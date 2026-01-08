@@ -99,7 +99,10 @@
               ;
             nixosModules = ./modules/nixos;
           };
-          modules = [ ./hosts/${hostname} ];
+          modules = [
+            ./hosts/${hostname}
+            ./hosts/common
+          ];
         };
 
       mkHomeConfiguration =
@@ -113,6 +116,7 @@
           };
           modules = [
             ./home/${username}
+            ./home/common
           ];
         };
     in

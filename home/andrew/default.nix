@@ -7,7 +7,6 @@
 }:
 {
   imports = [
-    ../common
     "${nhModules}/programs/browser/zen.nix"
     "${nhModules}/programs/cli/bat.nix"
     "${nhModules}/programs/cli/direnv.nix"
