@@ -19,22 +19,22 @@ thats why im keeping to system-wide configurations like desktop environment, hos
 | `modules/`  | reusable modules for home-manager and nixos |
 | `overlays/` | custom nixpkgs overlays                     |
 
-# Installing
+<!-- # Installing
 
 ```bash
 sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://not-a-cowfr.github.io/nixos-config/install.sh | bash"
-```
+``` -->
 
 # TODO
 
 ### for repo
 
 - [ ] comment stuff more to make it readable for other people
-- [x] add script that will set up this as your config, with options to select which home and host config to use
+- [ ] add script that will set up this as your config, with options to select which home and host config to use (check `install-script` branch for updates)
 
 ### for config
 
-- [ ] try out switching from ext4 to btrfs
+- [x] try out switching from ext4 to btrfs
 - [ ] make a niri config
 - [ ] convert my equicord json config to nixcord nix config
 - [x] get milennium for steam working
