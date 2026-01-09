@@ -65,11 +65,14 @@
     let
       inherit (self) outputs;
 
+      # read and parse config file
       configFile = builtins.fromTOML (builtins.readFile ./config.toml);
       hostname = configFile.computer.host;
 
+      # todo: im pretty sure this is whats causing the warning to be replaced with 'stdenv.hostPlatform.system'
       system = "x86_64-linux";
 
+      # function for easily defining new users
       mkUser = username: fullName: {
         ${username} = {
           name = username;
@@ -78,14 +81,17 @@
         };
       };
 
+      # add users here as shown
       allUsers = nixpkgs.lib.foldl' nixpkgs.lib.recursiveUpdate { } [
         (mkUser "andrew" "Andrew Gielow")
       ];
 
+      # filter only users enabled in the config file
       enabledUsers = nixpkgs.lib.filterAttrs (
         name: _: builtins.elem name configFile.computer.users
       ) allUsers;
 
+      # call modules for chosen host
       mkNixosConfiguration =
         hostname:
         nixpkgs.lib.nixosSystem {
@@ -105,6 +111,7 @@
           ];
         };
 
+      # call modules for user
       mkHomeConfiguration =
         username: hostname:
         home-manager.lib.homeManagerConfiguration {
@@ -125,6 +132,7 @@
         ${hostname} = mkNixosConfiguration hostname;
       };
 
+      # run mkHomeConfiguartion for every activated user
       homeConfigurations = nixpkgs.lib.listToAttrs (
         map (username: {
           name = "${username}@${hostname}";
