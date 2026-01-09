@@ -21,7 +21,7 @@
     inputs.millennium.overlays.default
   ];
 
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-rc;
 
   networking.firewall = {
     allowedTCPPorts = [
