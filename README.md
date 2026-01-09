@@ -9,8 +9,8 @@ I think this is the best way because if every bit of software was configurable f
 plus, the config.toml would be so overly complex if you want to configure different users idividually
 thats why im keeping to system-wide configurations like desktop environment, hostname, and what users to include
 
-> [!CAUTION]
-> This config uses disko so using this to install nixos will wipe your disk
+<!-- > [!CAUTION]
+> This config uses disko so using this to install nixos will wipe your disk -->
 
 # Organization
 
