@@ -24,10 +24,6 @@
     "${nhModules}/programs/terminal/ghostty.nix"
   ];
 
-  news.display = "silent";
-
-  programs.home-manager.enable = true;
-
   services.kdeconnect.enable = true;
 
   home.packages = with pkgs; [
@@ -35,7 +31,6 @@
     prismlauncher
     zoom-us
     nixfmt
+    openrazer-daemon
   ];
-
-  home.stateVersion = "26.05";
 }

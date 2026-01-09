@@ -35,16 +35,21 @@
     nixPath = [ "/etc/nix/path" ];
 
     settings = {
+      # enables nix commands and flakes
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
     };
 
+    # iirc this should delete old nixos configurations
+    # i chose 30d because i doubt i will have 30d worth of unbootable configurations to need ones that old
+    # automated to run every week
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
 
+    # i have no clue what this optimises but optimization is cool so i have it enabled
     optimise = {
       automatic = true;
       dates = [ "weekly" ];
@@ -57,6 +62,7 @@
   }) config.nix.registry;
 
   environment.sessionVariables = {
+    # note to chromium apps that wayland is used
     NIXOS_OZONE_WL = 1;
     # NIX_BUILD_SHELL = "nu";
   };
@@ -64,15 +70,20 @@
   boot = {
     loader.efi.canTouchEfiVariables = true;
 
+    # gives 2 seconds to select another boot option before auto booting nixos
+    # timer pauses once you do something which is why its only 2 seconds
     loader.timeout = 2;
+    # disbaled systemd-boot in order to use grub
     loader.systemd-boot.enable = false;
 
+    # enable grub with os prober
     loader.grub = {
       enable = true;
       devices = [ "nodev" ];
       efiSupport = true;
       useOSProber = true;
 
+      # add grub nixos theme
       theme = pkgs.stdenv.mkDerivation {
         pname = "distro-grub-themes";
         version = "3.1";
@@ -96,6 +107,7 @@
     # '';
   };
 
+  # enable netowrking
   networking = {
     networkmanager.enable = true;
     hostName = hostname;
@@ -106,8 +118,11 @@
     plymouth-quit-wait.enable = false;
   };
 
+  # allows running non-nix-native programs
   programs.nix-ld.enable = true;
 
+  # locale stuff
+  # todo: maybe pull this info from config.toml?
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -121,28 +136,29 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-  hardware.openrazer.enable = true;
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-
-  services.libinput.enable = true;
-
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
-  services.dbus.enable = true;
+  # enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   environment.localBinInPath = true;
 
+  # misc services, i forgot what most of them do
+  services.locate.enable = true;
+  # enable openssh
+  services.openssh.enable = true;
+  services.libinput.enable = true;
+  services.dbus.enable = true;
+  # enable printing
   services.printing.enable = false;
-
   services.devmon.enable = true;
-
+  # enable audio stuff
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -152,8 +168,6 @@
     pulse.enable = true;
     jack.enable = true;
   };
-
-  services.flatpak.enable = true;
 
   users.users = lib.mapAttrs (_: user: {
     isNormalUser = true;
@@ -187,23 +201,20 @@
 
   # security.sudo.wheelNeedsPassword = false;
 
-  environment.systemPackages = with pkgs; [
-    gcc
-    glib
-    gnumake
-    killall
-    mesa
-  ];
-
   systemd.tmpfiles.rules = [
+    # for getting qemu to work
+    # todo: move to modules/nixos/services/qemu
     "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware"
     # "f /dev/shm/looking-glass 0660 ${user} qemu-libvirtd -"
+    # give wheel group full access to /etc/nixos and any user read access
     "d /etc/nixos 0774 root wheel - -"
   ];
 
   virtualisation = {
     virtualbox.host.enable = true;
 
+    # enable qemu
+    # todo: move to modules/nixos/services/qemu
     libvirtd = {
       enable = true;
       qemu = {
@@ -217,6 +228,8 @@
 
     spiceUSBRedirection.enable = true;
 
+    # enable docker service
+    # todo: move to modules/nixos/services/docker
     docker = {
       enable = true;
       rootless.enable = true;
@@ -224,15 +237,15 @@
     };
   };
 
+  # enable xwayland
   programs.xwayland.enable = true;
 
+  # install comic-shanns-mono
+  # todo: install ms comic sans
   fonts.packages = with pkgs; [
     nerd-fonts.comic-shanns-mono
   ];
 
-  services.locate.enable = true;
-
-  services.openssh.enable = true;
-
+  # nixos version
   system.stateVersion = "26.11";
 }
