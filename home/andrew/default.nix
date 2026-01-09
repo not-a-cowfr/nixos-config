@@ -2,7 +2,6 @@
   nhModules,
   pkgs,
   inputs,
-  configFile,
   ...
 }:
 {

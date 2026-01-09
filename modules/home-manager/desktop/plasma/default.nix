@@ -4,7 +4,6 @@
   lib,
   nhModules,
   pkgs,
-  self,
   ...
 }:
 let
@@ -28,7 +27,7 @@ in
 {
   imports = [
     inputs.plasma-manager.homeModules.plasma-manager
-    "${self}/assets/wallpapers/dark fern"
+    "/etc/nixos/assets/wallpapers/dark fern"
   ];
 
   home.packages = with pkgs; [
@@ -339,7 +338,7 @@ in
       theme = "Otto";
       colorScheme = "BreezeDark";
       iconTheme = "Breeze Dark";
-      wallpaper = "${self}/assets/wallpapers/dark fern/image.jpg";
+      wallpaper = "/etc/nixos/assets/wallpapers/dark fern/image.jpg";
       splashScreen.theme = "Illusion";
     };
 
