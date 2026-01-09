@@ -27,7 +27,7 @@ in
 {
   imports = [
     inputs.plasma-manager.homeModules.plasma-manager
-    "/etc/nixos/assets/wallpapers/dark fern"
+    ../../../../assets/wallpapers/dark_fern
   ];
 
   home.packages = with pkgs; [
@@ -338,7 +338,7 @@ in
       theme = "Otto";
       colorScheme = "BreezeDark";
       iconTheme = "Breeze Dark";
-      wallpaper = "/etc/nixos/assets/wallpapers/dark fern/image.jpg";
+      wallpaper = "/etc/nixos/assets/wallpapers/dark_fern/image.jpg";
       splashScreen.theme = "Illusion";
     };
 
