@@ -199,7 +199,7 @@ in
 
     session = {
       general.askForConfirmationOnLogout = false;
-      sessionRestore.restoreOpenApplicationsOnLogin = "onLastLogout";
+      sessionRestore.restoreOpenApplicationsOnLogin = "whenSessionWasManuallySaved";
     };
 
     shortcuts = {
