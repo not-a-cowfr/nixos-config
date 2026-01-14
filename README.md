@@ -1,5 +1,7 @@
 # My NixOS config
 
+![wakatime](https://wakatime.com/badge/github/not-a-cowfr/nixos-config.svg)
+
 Decided to move my nixos config to its own repo
 
 I hope that this repo will be readable enough for someone to use as reference when making their own config
