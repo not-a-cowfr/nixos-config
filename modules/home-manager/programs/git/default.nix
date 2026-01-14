@@ -2,6 +2,7 @@
 {
   programs.git = {
     enable = true;
+    lfs.enable = true;
 
     settings = {
       # todo: dont hardcode user info
