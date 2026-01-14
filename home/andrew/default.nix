@@ -27,6 +27,7 @@
   services.kdeconnect.enable = true;
 
   home.packages = with pkgs; [
+    vlc
     legcord
     prismlauncher
     zoom-us
