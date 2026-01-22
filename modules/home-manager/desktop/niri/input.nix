@@ -19,4 +19,8 @@
       accel-profile = "flat";
     };
   };
+
+  cursor = {
+    size = 16;
+  };
 }

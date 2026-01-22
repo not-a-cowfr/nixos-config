@@ -40,6 +40,10 @@
         };
 
         prefer-no-csd = true;
+
+        clipboard = {
+          disable-primary = true;
+        };
       }
     ];
   };
