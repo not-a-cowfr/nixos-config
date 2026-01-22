@@ -11,9 +11,55 @@
     }
     {
       matches = [
-        # todo: convert kwin rules to this as close as possible
+        {
+          app-id = ".*ghostty.*";
+          at-startup = true;
+        }
+        {
+          app-id = ".*github.*";
+          at-startup = true;
+        }
       ];
-      open-floating = true;
+
+      open-on-workspace = "terminal";
+    }
+    {
+      matches = [
+        {
+          app-id = ".*codium.*";
+          at-startup = true;
+        }
+      ];
+
+      open-on-workspace = "code";
+    }
+    {
+      matches = [
+        {
+          app-id = ".*zen.*";
+          at-startup = true;
+        }
+        {
+          app-id = ".*zoom.*";
+          at-startup = true;
+        }
+      ];
+
+      open-on-workspace = "personal";
+    }
+    {
+      matches = [
+        {
+          app-id = ".*(leg|dis|equi|ven)cord.*";
+          at-startup = true;
+        }
+        {
+          app-id = ".*steam.*";
+          at-startup = true;
+        }
+      ];
+
+      open-on-workspace = "gaming";
     }
   ];
 

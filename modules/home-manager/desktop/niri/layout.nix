@@ -31,4 +31,16 @@
       spread = 4;
     };
   };
+
+  # nix doesnt keep this order
+  # and niri creates the workspaces in the order it sees them
+  # so you might need to fix the order
+  # using `niri msg action move-workspace-<up|down>`
+  # but then it _should_ be fixed forever
+  workspaces = {
+    terminal = { };
+    code = { };
+    personal = { };
+    gaming = { };
+  };
 }
