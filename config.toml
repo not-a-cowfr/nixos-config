@@ -4,5 +4,5 @@ users = ["andrew"]
 disk = "nvme0n1"   # required if using this config to install nixos
 
 [desktop]
-environment = "plasma"            # required
-modules = ["panels/windows-like"]
+environment = "niri" # required
+modules = []
