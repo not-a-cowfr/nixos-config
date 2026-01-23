@@ -244,6 +244,10 @@
     nerd-fonts.comic-shanns-mono
   ];
 
+  environment.systemPackages = with pkgs; [
+    efibootmgr
+  ];
+
   # nixos version
   system.stateVersion = "26.11";
 }
