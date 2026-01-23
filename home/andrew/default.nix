@@ -32,5 +32,8 @@
     prismlauncher
     zoom-us
     nixfmt
+    gparted
+    transmission_4
+    kdePackages.isoimagewriter
   ];
 }
