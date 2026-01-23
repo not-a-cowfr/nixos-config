@@ -18,7 +18,7 @@
     "${nhModules}/programs/programming/languages/typescript.nix"
     "${nhModules}/programs/programming/languages/python.nix"
     "${nhModules}/programs/programming/github.nix"
-    "${nhModules}/programs/razer"
+    # "${nhModules}/programs/razer"
     "${nhModules}/programs/shell/nushell"
     "${nhModules}/programs/steam"
     "${nhModules}/programs/terminal/ghostty.nix"
@@ -32,6 +32,5 @@
     prismlauncher
     zoom-us
     nixfmt
-    openrazer-daemon
   ];
 }

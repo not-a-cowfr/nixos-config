@@ -25,7 +25,7 @@
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-rc;
 
   # enable open razer
-  hardware.openrazer.enable = true;
+  # hardware.openrazer.enable = true;
 
   networking.firewall = {
     allowedTCPPorts = [
