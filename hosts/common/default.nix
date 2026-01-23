@@ -208,32 +208,32 @@
     "d /etc/nixos 0774 root wheel - -"
   ];
 
-  virtualisation = {
-    virtualbox.host.enable = true;
+  # virtualisation = {
+  #   virtualbox.host.enable = true;
 
-    # enable qemu
-    # todo: move to modules/nixos/services/qemu
-    libvirtd = {
-      enable = true;
-      qemu = {
-        swtpm.enable = true;
-        # ovmf = {
-        #   enable = true;
-        #   packages = [ pkgs.OVMFFull.fd ];
-        # };
-      };
-    };
+  #   # enable qemu
+  #   # todo: move to modules/nixos/services/qemu
+  #   libvirtd = {
+  #     enable = true;
+  #     qemu = {
+  #       swtpm.enable = true;
+  #       # ovmf = {
+  #       #   enable = true;
+  #       #   packages = [ pkgs.OVMFFull.fd ];
+  #       # };
+  #     };
+  #   };
 
-    spiceUSBRedirection.enable = true;
+  #   spiceUSBRedirection.enable = true;
 
-    # enable docker service
-    # todo: move to modules/nixos/services/docker
-    docker = {
-      enable = true;
-      rootless.enable = true;
-      rootless.setSocketVariable = true;
-    };
-  };
+  #   # enable docker service
+  #   # todo: move to modules/nixos/services/docker
+  #   docker = {
+  #     enable = true;
+  #     rootless.enable = true;
+  #     rootless.setSocketVariable = true;
+  #   };
+  # };
 
   # enable xwayland
   programs.xwayland.enable = true;
