@@ -38,25 +38,25 @@
       repeat = false;
     };
 
-    "Mod+W".action = focus-window-or-workspace-up;
-    "Mod+A".action = focus-column-left;
-    "Mod+S".action = focus-window-or-workspace-down;
-    "Mod+D".action = focus-column-right;
+    "Ctrl+Mod+Up".action = focus-window-or-workspace-up;
+    "Ctrl+Mod+Left".action = focus-column-left;
+    "Ctrl+Mod+Down".action = focus-window-or-workspace-down;
+    "Ctrl+Mod+Right".action = focus-column-right;
 
-    "Mod+Ctrl+W".action = move-column-to-workspace-up;
-    "Mod+Ctrl+A".action = move-column-left;
-    "Mod+Ctrl+S".action = move-column-to-workspace-down;
-    "Mod+Ctrl+D".action = move-column-right;
+    "Mod+Up".action = move-column-to-workspace-up;
+    "Mod+Left".action = move-column-left;
+    "Mod+Down".action = move-column-to-workspace-down;
+    "Mod+Right".action = move-column-right;
 
-    "Mod+Alt+W".action = focus-monitor-up;
-    "Mod+Alt+A".action = focus-monitor-left;
-    "Mod+Alt+S".action = focus-monitor-down;
-    "Mod+Alt+D".action = focus-monitor-right;
+    "Mod+Alt+Up".action = focus-monitor-up;
+    "Mod+Alt+Left".action = focus-monitor-left;
+    "Mod+Alt+Down".action = focus-monitor-down;
+    "Mod+Alt+Right".action = focus-monitor-right;
 
-    "Mod+Alt+Ctrl+W".action = move-column-to-monitor-up;
-    "Mod+Alt+Ctrl+A".action = move-column-to-monitor-left;
-    "Mod+Alt+Ctrl+S".action = move-column-to-monitor-down;
-    "Mod+Alt+Ctrl+D".action = move-column-to-monitor-right;
+    "Mod+Alt+Ctrl+Up".action = move-column-to-monitor-up;
+    "Mod+Alt+Ctrl+Left".action = move-column-to-monitor-left;
+    "Mod+Alt+Ctrl+Down".action = move-column-to-monitor-down;
+    "Mod+Alt+Ctrl+Right".action = move-column-to-monitor-right;
 
     "Mod+Tab".action = toggle-overview;
     "Mod+G".action = consume-or-expel-window-left;
