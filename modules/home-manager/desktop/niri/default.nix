@@ -18,7 +18,14 @@
   home.packages = with pkgs; [
     xwayland-satellite
     fuzzel
-    # wl-clipboard
+    kdePackages.dolphin
+    btop
+
+    # necessary stuff
+    brightnessctl
+    wireplumber
+    sway-contrib.grimshot
+    wl-clipboard
   ];
 
   services.polkit-gnome.enable = true;
