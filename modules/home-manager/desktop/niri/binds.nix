@@ -4,7 +4,6 @@
     "Mod+T".action = spawn "ghostty";
     "Mod+L".action = spawn "hyprlock";
     "Mod+E".action = spawn "dolphin";
-    "Mod+I".action = spawn "vscodium /etc/nixos";
     "Alt+Space".action = spawn "fuzzel";
     "Ctrl+Shift+Escape".action = spawn "btop";
 
