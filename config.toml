@@ -1,11 +1,16 @@
 [computer]
-host = "laptop"    # required
+# `ls /etc/nixos/hosts` for options, ignore `common`
+host = "laptop" # required
+# `ls /etc/nixos/home` for options, ignore `common`
 users = ["andrew"]
 disk = "nvme0n1"   # required if using this config to install nixos
 
 [desktop]
-environment = "niri"    # required
+# `ls /etc/nixos/modules/nixos/desktop` for options
+environment = "niri" # required
+# `ls /etc/nixos/modules/home-manager/desktop/<environment>` for options
 modules = []
+# `ls /etc/nixos/assets/wallpapers` for options
 wallpaper = "dark_fern"
 
 [hardware]
