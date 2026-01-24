@@ -4,8 +4,9 @@ users = ["andrew"]
 disk = "nvme0n1"   # required if using this config to install nixos
 
 [desktop]
-environment = "niri" # required
+environment = "niri"    # required
 modules = []
+wallpaper = "dark_fern"
 
 [hardware]
 keyboard = { layout = "us", variant = "" } # all required

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  configFile,
   ...
 }:
 let
@@ -8,7 +9,7 @@ let
   foreground = "rgb(255,255,255)";
   blue = "rgb(79,201,214)";
   red = "rgb(224,16,54)";
-  wallpaper = "/etc/nixos/assets/wallpapers/dark_fern/image.jpg";
+  wallpaper = "/etc/nixos/assets/wallpapers/${configFile.desktop.wallpaper}/image.jpg";
   font = "Comic Sans MS";
 in
 {

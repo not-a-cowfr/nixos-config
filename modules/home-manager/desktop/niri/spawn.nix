@@ -1,3 +1,4 @@
+{ configFile, ... }:
 {
   spawn-at-startup = [
     { command = [ "waybar" ]; }
@@ -16,7 +17,7 @@
       command = [
         "swaybg"
         "-i"
-        "/etc/nixos/assets/wallpapers/dark_fern/image.jpg"
+        "/etc/nixos/assets/wallpapers/${configFile.desktop.wallpaper}/image.jpg"
       ];
     }
   ];

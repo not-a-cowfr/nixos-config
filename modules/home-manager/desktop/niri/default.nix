@@ -35,9 +35,9 @@
     settings = lib.mkMerge [
       (import ./binds.nix { inherit config; })
       (import ./input.nix { inherit configFile; })
+      (import ./spawn.nix { inherit configFile; })
       ./layout.nix
       ./rules.nix
-      ./spawn.nix
       {
         hotkey-overlay = {
           skip-at-startup = true;
