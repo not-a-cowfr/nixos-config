@@ -12,5 +12,12 @@
         "store"
       ];
     }
+    {
+      command = [
+        "swaybg"
+        "-i"
+        "/etc/nixos/assets/wallpapers/dark_fern/image.jpg"
+      ];
+    }
   ];
 }

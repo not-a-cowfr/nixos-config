@@ -20,6 +20,7 @@
     fuzzel
     kdePackages.dolphin
     btop
+    swaybg
 
     # necessary stuff
     brightnessctl
