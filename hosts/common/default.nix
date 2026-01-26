@@ -179,6 +179,7 @@
       "libvirtd"
       "vboxusers"
     ];
+    shell = pkgs.nushell;
   }) enabledUsers;
 
   # user avatar
@@ -247,6 +248,8 @@
   environment.systemPackages = with pkgs; [
     efibootmgr
   ];
+
+  environment.shells = [ pkgs.nushell ];
 
   # nixos version
   system.stateVersion = "26.11";
