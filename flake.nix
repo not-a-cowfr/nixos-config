@@ -47,7 +47,7 @@
     };
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-
+    nixcord.url = "github:FlameFlag/nixcord";
     # when #624 gets merged change this from trivaris to SteamClientHomebrew
     millennium.url = "github:trivaris/millennium?dir=packages/nix";
 

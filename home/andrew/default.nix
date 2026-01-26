@@ -22,13 +22,13 @@
     "${nhModules}/programs/shell/nushell"
     "${nhModules}/programs/steam"
     "${nhModules}/programs/terminal/ghostty.nix"
+    "${nhModules}/programs/discord/equicord.nix"
   ];
 
   services.kdeconnect.enable = true;
 
   home.packages = with pkgs; [
     vlc
-    legcord
     prismlauncher
     zoom-us
     nixfmt

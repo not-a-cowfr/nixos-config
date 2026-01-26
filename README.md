@@ -41,7 +41,7 @@ sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://not-a-cowfr.githu
 
 - [x] try out switching from ext4 to btrfs
 - [x] make a niri config
-- [ ] convert my equicord json config to nixcord nix config
+- [x] convert my equicord json config to nixcord nix config
 - [x] get milennium for steam working
 - [x] sort programs stuff into categories that are easy to enable/disable different parts
 
