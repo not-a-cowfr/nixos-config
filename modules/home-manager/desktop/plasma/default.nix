@@ -4,6 +4,7 @@
   lib,
   nhModules,
   pkgs,
+  configFile,
   ...
 }:
 let
@@ -32,7 +33,6 @@ in
 
   home.packages = with pkgs; [
     kdePackages.kcalc
-    kdePackages.krohnkite
     kdotool
     tela-circle-icon-theme
     otto
