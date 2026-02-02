@@ -20,7 +20,6 @@
     "${nhModules}/programs/programming/github.nix"
     # "${nhModules}/programs/razer"
     "${nhModules}/programs/shell/nushell"
-    "${nhModules}/programs/steam"
     "${nhModules}/programs/terminal/ghostty.nix"
     "${nhModules}/programs/discord/equicord.nix"
   ];
