@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    pkgs.jetbrains.idea-ultimate
+  home.packages = with pkgs; [
+    jetbrains.idea
   ];
 }

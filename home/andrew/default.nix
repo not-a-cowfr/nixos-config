@@ -12,6 +12,7 @@
     "${nhModules}/programs/cli/starship.nix"
     "${nhModules}/programs/git"
     "${nhModules}/programs/ide/vscodium.nix"
+    "${nhModules}/programs/ide/idea.nix"
     "${nhModules}/programs/ide/vim.nix"
     "${nhModules}/programs/music/spicetify.nix"
     "${nhModules}/programs/programming/languages/rust.nix"
