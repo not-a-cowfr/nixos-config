@@ -11,8 +11,8 @@
 
     quickCss = lib.strings.trim (builtins.readFile ./quickCss.css);
     config = {
-      autoUpdate = true;
-      autoUpdateNotification = true;
+      autoUpdate = false;
+      autoUpdateNotification = false;
       # eagerPatches = false;
       enabledThemes = [ ];
       # enabledThemeLinks = [];
