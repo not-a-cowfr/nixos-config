@@ -29,9 +29,9 @@
     vlc
     prismlauncher
     zoom-us
+    stoat-desktop
     nixfmt
     gparted
-    transmission_4
     kdePackages.isoimagewriter
     localsend
   ];
