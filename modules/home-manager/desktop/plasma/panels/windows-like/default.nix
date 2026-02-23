@@ -48,7 +48,7 @@
 
               "org.kde.plasma.marginsseparator"
 
-              "applications:legcord.desktop"
+              "applications:equibop.desktop"
               "applications:spotify.desktop"
               "preferred://browser"
 
