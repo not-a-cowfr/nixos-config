@@ -25,8 +25,6 @@
     "${nhModules}/programs/discord/equicord.nix"
   ];
 
-  services.kdeconnect.enable = true;
-
   home.packages = with pkgs; [
     vlc
     prismlauncher
@@ -35,5 +33,6 @@
     gparted
     transmission_4
     kdePackages.isoimagewriter
+    localsend
   ];
 }

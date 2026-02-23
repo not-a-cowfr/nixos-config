@@ -29,26 +29,15 @@
 
   networking.firewall = {
     allowedTCPPorts = [
-      # http
-      80
-      # https
-      443
-      # minecraft
-      25565
+      80 # http
+      443 # https
+      25565 # minecraft
+      53317 # localsend
     ];
     allowedTCPPortRanges = [
-      # kde connect
-      {
-        from = 1714;
-        to = 1764;
-      }
     ];
     allowedUDPPortRanges = [
-      # kde connect
-      {
-        from = 1714;
-        to = 1764;
-      }
+
     ];
   };
 }
