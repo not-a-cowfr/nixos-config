@@ -105,6 +105,7 @@
               "org.kde.plasma.mediacontroller"
               "org.kde.plasma.weather"
               "org.kde.plasma.brightness"
+              "org.kde.plasma.notifications"
             ];
           };
         }
