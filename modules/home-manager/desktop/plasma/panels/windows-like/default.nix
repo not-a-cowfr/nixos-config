@@ -43,7 +43,6 @@
               "org.kde.plasma.marginsseparator"
 
               "applications:com.mitchellh.ghostty.desktop"
-              "applications:github-desktop.desktop"
               "applications:codium.desktop"
 
               "org.kde.plasma.marginsseparator"
