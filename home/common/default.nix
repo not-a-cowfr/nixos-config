@@ -21,6 +21,9 @@
     name: "${nhModules}/desktop/${configFile.desktop.environment}/${name}"
   ) configFile.desktop.modules or [ ];
 
+  # when using stylix this always warns about being clobbered and i couldnt care any less about it so just force overwrite it
+  gtk.gtk2.force = true;
+
   # i forgot why i added this, i think it was to update nix everytime i rebuilt home-manager because nix got outdated
   nix.package = pkgs.nix;
 
