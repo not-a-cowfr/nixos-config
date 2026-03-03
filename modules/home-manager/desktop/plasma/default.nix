@@ -7,35 +7,16 @@
   configFile,
   ...
 }:
-let
-  otto = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
-    name = "otto";
-    src = pkgs.fetchFromGitLab {
-      owner = "jomada";
-      repo = "otto";
-      rev = "55a8dc6e2de4b7b2c8c171b4a36e87b71104da21";
-      sha256 = "sha256-58Aqiu/umLmedGldZJMWEkk/5bs05Pl4+rrKfAs4lyA=";
-    };
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out/share/plasma/plasmoids/otto
-      cp -r ./* $out/share/plasma/plasmoids/otto/
-      runHook postInstall
-    '';
-    passthru.updateScript = pkgs.nix-update-script { };
-  });
-in
 {
   imports = [
     inputs.plasma-manager.homeModules.plasma-manager
-    "/etc/nixos/assets/wallpapers/${configFile.desktop.wallpaper}"
+    ../../../../assets/wallpapers/${configFile.desktop.wallpaper}
   ];
 
   home.packages = with pkgs; [
     kdePackages.kcalc
     kdotool
     tela-circle-icon-theme
-    otto
   ];
 
   services.gpg-agent = {
@@ -46,32 +27,32 @@ in
   programs.plasma = {
     enable = true;
 
-    fonts = {
-      general = {
-        family = "Comic Sans MS";
-        pointSize = 10;
-      };
-      fixedWidth = {
-        family = "ComicShannsMono Nerd Font Mono";
-        pointSize = 10;
-      };
-      small = {
-        family = "Comic Sans MS";
-        pointSize = 8;
-      };
-      toolbar = {
-        family = "Comic Sans MS";
-        pointSize = 10;
-      };
-      menu = {
-        family = "Comic Sans MS";
-        pointSize = 10;
-      };
-      windowTitle = {
-        family = "Comic Sans MS";
-        pointSize = 10;
-      };
-    };
+    # fonts = {
+    #   general = {
+    #     family = "Comic Sans MS";
+    #     pointSize = 10;
+    #   };
+    #   fixedWidth = {
+    #     family = "ComicShannsMono Nerd Font Mono";
+    #     pointSize = 10;
+    #   };
+    #   small = {
+    #     family = "Comic Sans MS";
+    #     pointSize = 8;
+    #   };
+    #   toolbar = {
+    #     family = "Comic Sans MS";
+    #     pointSize = 10;
+    #   };
+    #   menu = {
+    #     family = "Comic Sans MS";
+    #     pointSize = 10;
+    #   };
+    #   windowTitle = {
+    #     family = "Comic Sans MS";
+    #     pointSize = 10;
+    #   };
+    # };
 
     hotkeys.commands = {
       launch-system-monitor = {
@@ -332,13 +313,13 @@ in
     workspace = {
       enableMiddleClickPaste = false;
       clickItemTo = "select";
-      windowDecorations.library = "org.kde.breeze";
-      windowDecorations.theme = "Breeze";
-      cursor.theme = "breeze_cursors";
-      theme = "Otto";
-      colorScheme = "BreezeDark";
-      iconTheme = "Breeze Dark";
-      wallpaper = "/etc/nixos/assets/wallpapers/${configFile.desktop.wallpaper}/image.jpg";
+      #   windowDecorations.library = "org.kde.breeze";
+      #   windowDecorations.theme = "Breeze";
+      #   cursor.theme = "breeze_cursors";
+      #   theme = "Otto";
+      #   colorScheme = "BreezeDark";
+      #   iconTheme = "Breeze Dark";
+      #   wallpaper = ../../../../assets/wallpapers/${configFile.desktop.wallpaper}/image.jpg;
       splashScreen.theme = "Illusion";
     };
 

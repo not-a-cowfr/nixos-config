@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -10,6 +11,8 @@ in
   imports = [
     inputs.spicetify-nix.homeManagerModules.spicetify
   ];
+
+  stylix.targets.spicetify.colors.enable = false;
 
   programs.spicetify = {
     enable = true;

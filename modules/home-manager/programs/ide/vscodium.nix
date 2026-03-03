@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
+  stylix.targets.vscode.colors.enable = false;
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium-fhs;
@@ -38,8 +40,7 @@
 
       userSettings = {
         "workbench.iconTheme" = "bearded-icons";
-        "workbench.colorTheme" = "Darcula Solid";
-        "editor.fontFamily" = "'ComicShannsMono Nerd Font Mono', 'monospace', monospace";
+        "workbench.colorTheme" = lib.mkForce "Darcula Solid";
         "workbench.secondarySideBar.defaultVisibility" = "hidden";
 
         "security.workspace.trust.untrustedFiles" = "open";

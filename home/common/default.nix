@@ -14,6 +14,7 @@
     "${nhModules}/programs/flatpak"
     "${nhModules}/programs/cli/fzf.nix"
     "${nhModules}/programs/cli/fastfetch.nix"
+    "${nhModules}/services/stylix"
   ]
   # import all desktop modules enabled in config file
   ++ map (

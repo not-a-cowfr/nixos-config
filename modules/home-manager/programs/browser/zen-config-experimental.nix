@@ -9,6 +9,8 @@
     inputs.zen-browser.homeModules.twilight
   ];
 
+  stylix.targets.zen-browser.profileNames = [ "default" ];
+
   home.sessionVariables = {
     BROWSER = "zen";
   };
@@ -191,24 +193,24 @@
         containersForce = true;
         inherit containers;
 
-        spacesForce = true;
-        spaces = {
-          "coding" = {
-            id = "f535e9e3-0959-45e8-8f1d-e8a4ca360451";
-            icon = "💻";
-            position = 1000;
-          };
-          "school" = {
-            id = "d190dfb1-a69c-4534-8a18-f0c508798b27";
-            icon = "🍎";
-            container = containers."Work".id;
-            position = 2000;
-          };
-        };
+        # spacesForce = true;
+        # spaces = {
+        #   "coding" = {
+        #     id = "f535e9e3-0959-45e8-8f1d-e8a4ca360451";
+        #     icon = "💻";
+        #     position = 1000;
+        #   };
+        #   "school" = {
+        #     id = "d190dfb1-a69c-4534-8a18-f0c508798b27";
+        #     icon = "🍎";
+        #     container = containers."Work".id;
+        #     position = 2000;
+        #   };
+        # };
 
         search = {
           force = true;
-          default = "google";
+          default = "duckduckgo";
           engines =
             let
               nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";

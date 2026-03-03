@@ -8,11 +8,11 @@
         startup_mode = "Maximized";
       };
 
-      font = {
-        normal = {
-          family = "ComicShannsMono Nerd Font Mono";
-        };
-      };
+      # font = {
+      #   normal = {
+      #     family = "ComicShannsMono Nerd Font Mono";
+      #   };
+      # };
 
       cursor = {
         style = {
