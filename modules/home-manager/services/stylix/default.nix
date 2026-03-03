@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  configFile,
+  ...
+}:
 let
   comic-shanns = pkgs.nerd-fonts.comic-shanns-mono;
 
@@ -12,7 +17,7 @@ in
   stylix = {
     enable = true;
 
-    image = "${inputs.self}/assets/wallpapers/dark_fern/image.jpg";
+    image = "${inputs.self}/assets/wallpapers/${configFile.desktop.wallpaper}/image.jpg";
     polarity = "dark";
     base16Scheme = {
       name = "Darcula Dark";
