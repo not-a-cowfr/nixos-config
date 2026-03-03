@@ -10,6 +10,7 @@
     "${nhModules}/programs/cli/bat.nix"
     "${nhModules}/programs/cli/direnv.nix"
     "${nhModules}/programs/cli/starship.nix"
+    "${nhModules}/programs/cli/btop.nix"
     "${nhModules}/programs/music/spicetify.nix"
     "${nhModules}/programs/programming/languages/rust.nix"
     "${nhModules}/programs/programming/languages/typescript.nix"

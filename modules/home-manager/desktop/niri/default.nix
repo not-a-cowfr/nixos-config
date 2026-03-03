@@ -19,7 +19,6 @@
     xwayland-satellite
     fuzzel
     kdePackages.dolphin
-    btop
     swaybg
 
     # necessary stuff
