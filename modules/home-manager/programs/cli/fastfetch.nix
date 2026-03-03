@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       logo = rec {
-        source = "/etc/nixos/assets/nixos-mlm.png";
+        source = ../../../../assets/nixos-mlm.png;
         height = 22;
         width = builtins.floor (height / 0.44);
       };
