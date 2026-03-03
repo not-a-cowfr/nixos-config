@@ -34,10 +34,7 @@
       25565 # minecraft
       53317 # localsend
     ];
-    allowedTCPPortRanges = [
-    ];
-    allowedUDPPortRanges = [
-
-    ];
+    allowedTCPPortRanges = [ ];
+    allowedUDPPortRanges = [ ];
   };
 }

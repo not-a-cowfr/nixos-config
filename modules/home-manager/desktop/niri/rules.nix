@@ -26,7 +26,7 @@
     {
       matches = [
         {
-          app-id = ".*codium.*";
+          app-id = "codium";
           at-startup = true;
         }
       ];

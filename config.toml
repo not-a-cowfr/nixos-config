@@ -7,9 +7,9 @@ disk = "nvme0n1"   # required if using this config to install nixos
 
 [desktop]
 # `ls /etc/nixos/modules/nixos/desktop` for options
-environment = "niri" # required
+environment = "plasma" # required
 # `ls /etc/nixos/modules/home-manager/desktop/<environment>` for options
-modules = []
+modules = ["panels/windows-like"]
 # `ls /etc/nixos/assets/wallpapers` for options
 wallpaper = "dark_fern"
 
