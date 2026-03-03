@@ -77,9 +77,6 @@
       configFile = builtins.fromTOML (builtins.readFile ./config.toml);
       hostname = configFile.computer.host;
 
-      # todo: im pretty sure this is whats causing the warning to be replaced with 'stdenv.hostPlatform.system'
-      system = "x86_64-linux";
-
       # function for easily defining new users
       mkUser = username: fullName: {
         ${username} = {
@@ -123,7 +120,7 @@
       mkHomeConfiguration =
         username: hostname:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
           extraSpecialArgs = {
             inherit inputs outputs configFile;
             userConfig = enabledUsers.${username};

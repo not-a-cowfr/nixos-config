@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 {
   home.packages = [
-    inputs.zen-browser.packages."${pkgs.system}".twilight
+    inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".twilight
   ];
 
   home.sessionVariables = {
