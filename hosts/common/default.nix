@@ -42,18 +42,16 @@
     };
 
     # iirc this should delete old nixos configurations
-    # i chose 30d because i doubt i will have 30d worth of unbootable configurations to need ones that old
-    # automated to run every week
     gc = {
       automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
+      dates = "daily";
+      options = "--delete-old";
     };
 
     # i have no clue what this optimises but optimization is cool so i have it enabled
     optimise = {
       automatic = true;
-      dates = [ "weekly" ];
+      dates = [ "daily" ];
     };
   };
 
