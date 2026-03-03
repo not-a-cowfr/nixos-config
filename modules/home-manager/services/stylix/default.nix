@@ -1,6 +1,8 @@
 { pkgs, inputs, ... }:
 let
   comic-shanns = pkgs.nerd-fonts.comic-shanns-mono;
+
+  opacity = 0.8;
 in
 {
   imports = [
@@ -11,6 +13,7 @@ in
     enable = true;
 
     image = "${inputs.self}/assets/wallpapers/dark_fern/image.jpg";
+    polarity = "dark";
     base16Scheme = {
       name = "Darcula Dark";
       slug = "darcula-dark";
@@ -34,7 +37,6 @@ in
     };
 
     fonts = {
-
       sansSerif = {
         package = comic-shanns;
         name = "ComicShannsMono Nerd Font Mono";
@@ -47,6 +49,13 @@ in
         package = comic-shanns;
         name = "ComicShannsMono Nerd Font Mono";
       };
+    };
+
+    opacity = {
+      applications = opacity;
+      desktop = opacity;
+      popups = opacity;
+      terminal = opacity;
     };
   };
 }
