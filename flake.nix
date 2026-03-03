@@ -37,7 +37,7 @@
     };
 
     # addons
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/58f338b00bc5619144a6f3082eed5c83e79b279b";
 
     # apps
     zen-browser = {
@@ -52,8 +52,6 @@
     millennium.url = "github:trivaris/millennium?dir=packages/nix";
 
     # services
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
