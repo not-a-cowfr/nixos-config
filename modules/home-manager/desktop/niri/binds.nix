@@ -33,7 +33,7 @@
       action = spawn "brightnessctl" "--class=backlight" "set" "5%-";
     };
 
-    "Ctrl+Q" = {
+    "Mod+Q" = {
       action = close-window;
       repeat = false;
     };
