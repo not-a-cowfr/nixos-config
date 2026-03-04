@@ -1,93 +1,104 @@
-@import url("https://refact0r.github.io/midnight-discord/build/midnight.css");
+/* main theme */
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+
+/* apple emojis */
+@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Apple.css);
+
+/* better icon */
+@import url("https://raw.githubusercontent.com/KrstlSkll69/vc-snippets/main/IconRecolors.css");
+@import url("https://raw.githubusercontent.com/KrstlSkll69/vc-snippets/main/OtherStuff/better-social-links.css");
 
 body {
-    --font: "Comic Sans MS"; /* change to '' for default discord font */
-    --code-font: "ComicShannsMono Nerd Font Mono"; /* change to '' for default discord font */
-    font-weight: 100; /* normal text font weight. DOES NOT AFFECT BOLD TEXT */
+    /* font options */
+    --font: 'Comic Sans MS'; /* change to '' for default discord font */
+    --code-font: 'ComicShannsMono Nerd Font Mono'; /* change to '' for default discord font */
+    font-weight: 400; /* normal text font weight. DOES NOT AFFECT BOLD TEXT */
 
-    --gap: 4px; /* spacing between panels */
-    --divider-thickness: 1px; /* thickness of unread messages divider and highlighted message borders */
-    --border-thickness: 1px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+    --gap: 4px;
+    --divider-thickness: 1px;
+    --border-thickness: 1px;
 
-    --animations: off; /* off: disable animations/transitions, on: enable animations/transitions */
+    --animations: off;
 
-    --top-bar-height: var(--gap);
+    /* top bar options */
+    --top-bar-height: var(--gap); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
     --top-bar-button-position: titlebar; /* off: default position, hide: hide buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to channel titlebar (will hide title) */
     --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
     --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
 
-    --custom-window-controls: on; /* off: default window controls, on: custom window controls */
-    --window-control-size: 10px; /* size of custom window controls */
+    --custom-dms-icon: custom; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+    --dms-icon-svg-url: url('https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nix-snowflake-white.svg'); /* icon svg url. MUST BE A SVG. */
+    --dms-icon-svg-size: 100%; /* size of the svg (css mask-size property) */
+    --dms-icon-color-before: var(--icon-subtle); /* normal icon color */
+    --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
+    --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
 
-    --custom-dms-icon: off; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+    /* transparency/blur options */
+    /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+    --transparency-tweaks: on; /* off: no changes, on: remove some elements for better transparency */
+    --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+    --panel-blur: on;
+    --bg-floating: hsla(220, 15%, 13%, 1); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
 
-    --custom-chatbar: off; /* off: default chatbar, aligned: chatbar aligned with the user panel, separated: chatbar separated from chat */
-    --chatbar-height: 48px; /* height of the chatbar (52px by default, 47px recommended for aligned, 56px recommended for separated) */
-    --chatbar-padding: 6px; /* padding of the chatbar. only applies in aligned mode. */
+    /* chatbar options */
+    --custom-chatbar: off; /* off: default chatbar, separated: chatbar separated from chat */
+    --chatbar-height: 56px; /* height of the chatbar (56px by default, 47px to align with user panel, 56px recommended for separated) */
+
+    /* other options */
+    --small-user-panel: off; /* off: default user panel, on: smaller user panel like in old discord */
 }
 
+/* color options */
 :root {
-    --colors: on; /* off: discord default colors, on: midnight custom colors */
-
-    --text-0: var(--bg-4); /* text on colored elements */
+    /* text colors */
+    --text-0: hsla(220, 15%, 10%, 1); /* text on colored elements */
     --text-1: hsl(220, 45%, 95%); /* other normally white text */
-    --text-2: hsl(220, 25%, 70%); /* headings and important text */
-    --text-3: hsl(220, 20%, 60%); /* normal text */
-    --text-4: hsl(220, 15%, 40%); /* icon buttons and channels */
-    --text-5: hsl(220, 15%, 25%); /* muted channels/chats and timestamps */
+    --text-2: hsl(220, 25%, 85%); /* headings and important text */
+    --text-3: hsl(220, 20%, 70%); /* normal text */
+    --text-4: hsl(220, 15%, 50%); /* icon buttons and channels */
+    --text-5: hsl(220, 15%, 35%); /* muted channels/chats and timestamps */
 
-    --bg-1: hsla(220, 15%, 20%, 1); /* dark buttons when clicked */
-    --bg-2: hsl(213, 5%, 9%); /* dark buttons */
-    --bg-3: hsl(220, 6%, 11%); /* spacing, secondary elements */
-    --bg-4: rgb(18, 20, 20); /* main background color */
+    /* background and dark colors */
+    --bg-1: hsla(220, 15%, 20%, 0.6); /* dark buttons when clicked */
+    --bg-2: hsla(220, 15%, 16%, 0.6); /* dark buttons */
+    --bg-3: hsla(220, 15%, 13%, 0.5); /* spacing, secondary elements */
+    --bg-4: hsla(220, 15%, 10%, 0.3); /* main background color */
     --hover: hsla(221, 19%, 40%, 0.1); /* channels and buttons when hovered */
-    --active: hsla(220, 19%, 40%, 0.2);
-    --active-2: hsla(220, 19%, 40%, 0.3);
+    --active: hsla(220, 19%, 40%, 0.2); /* channels and buttons when clicked or selected */
+    --active-2: hsla(220, 19%, 40%, 0.3); /* extra state for transparent buttons */
     --message-hover: hsla(220, 0%, 0%, 0.1); /* messages when hovered */
 
+    /* accent colors */
     --accent-1: var(--blue-1); /* links and other accent text */
     --accent-2: var(--blue-2); /* small accent elements */
     --accent-3: var(--blue-3); /* accent buttons */
     --accent-4: var(--blue-4); /* accent buttons when hovered */
     --accent-5: var(--blue-5); /* accent buttons when clicked */
-    --accent-new: var(--red-4);
-    --mention: linear-gradient(
-        to right,
-        color-mix(in hsl, var(--yellow-2), transparent 90%) 40%,
-        transparent
-    );
-    --mention-hover: linear-gradient(
-        to right,
-        color-mix(in hsl, var(--accent-2), transparent 95%) 40%,
-        transparent
-    );
-    --reply: linear-gradient(
-        to right,
-        color-mix(in hsl, var(--text-3), transparent 90%) 40%,
-        transparent
-    );
-    --reply-hover: linear-gradient(
-        to right,
-        color-mix(in hsl, var(--text-3), transparent 95%) 40%,
-        transparent
-    );
+    --accent-new: var(--accent-2); /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--yellow-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--yellow-2), transparent 92%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
 
+    /* status indicator colors */
     --online: var(--green-2); /* change to #40a258 for default */
     --dnd: var(--red-4); /* change to #d83a41 for default */
     --idle: var(--yellow-2); /* change to #cc954c for default */
     --streaming: var(--purple-2); /* change to ##9147ff for default */
     --offline: var(--text-4); /* change to #82838b for default offline color */
 
+    /* border colors */
     --border-light: var(--hover); /* general light border color */
     --border: var(--active); /* general normal border color */
     --border-hover: var(--active); /* border color of panels when hovered */
-    --button-border: hsl(220, 0%, 100%, 0.1);
+    --button-border: hsl(220, 0%, 100%, 0.1); /* neutral border color of buttons */
 
-    --red-1: oklch(80% 0.18 28);
-    --red-2: oklch(75% 0.18 28);
-    --red-3: oklch(70% 0.18 28);
-    --red-4: oklch(65% 0.18 28);
-    --red-5: oklch(60% 0.18 28);
+    /* base colors */
+    --red-1: oklch(75% 0.2 0);
+    --red-2: oklch(70% 0.2 0);
+    --red-3: oklch(65% 0.2 0);
+    --red-4: oklch(60% 0.2 0);
+    --red-5: oklch(55% 0.2 0);
 
     --green-1: oklch(75% 0.11 170);
     --green-2: oklch(70% 0.11 170);
@@ -95,11 +106,11 @@ body {
     --green-4: oklch(60% 0.11 170);
     --green-5: oklch(55% 0.11 160);
 
-    --blue-1: oklch(75% 0.04 215);
-    --blue-2: oklch(70% 0.04 215);
-    --blue-3: oklch(65% 0.04 215);
-    --blue-4: oklch(60% 0.04 215);
-    --blue-5: oklch(55% 0.04 215);
+    --blue-1: oklch(75% 0.1 215);
+    --blue-2: oklch(70% 0.1 215);
+    --blue-3: oklch(65% 0.1 215);
+    --blue-4: oklch(60% 0.1 215);
+    --blue-5: oklch(55% 0.1 215);
 
     --yellow-1: oklch(80% 0.11 90);
     --yellow-2: oklch(75% 0.11 90);
@@ -112,23 +123,21 @@ body {
     --purple-3: oklch(65% 0.11 310);
     --purple-4: oklch(60% 0.11 310);
     --purple-5: oklch(55% 0.11 310);
-}
 
-/* fix checkbox buttons */
-@container root style(--colors: on) {
-    * {
-        --switch-background-selected-default: var(--green-2) !important;
-        --switch-border-selected-default: transparent !important;
-        --switch-background-default: var(--red-2) !important;
-        --switch-border-default: transparent !important;
-        --switch-thumb-background-default: rgb(228, 228, 228) !important;
+
+    .scrollerSpacer__36d07 {
+        height: 22px;
     }
 
-    .vc-switch-container {
-        background-color: transparent !important;
-    }
 
-    .vc-switch-container.vc-switch-checked {
-        background-color: transparent !important;
+    /* replace APP tag with the original BOT tag */
+    [class*="botText_"] {
+        visibility: hidden;
+        position: relative;
+    }
+    [class*="botText_"]::before {
+        content: "BOT";
+        visibility: visible;
+        position: absolute;
     }
 }

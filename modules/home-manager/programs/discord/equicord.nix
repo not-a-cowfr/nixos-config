@@ -21,7 +21,7 @@
       # themeNames = {};
       enableReactDevtools = false;
       frameless = false;
-      transparent = false;
+      transparent = true;
       # winCtrlQ = false;
       disableMinSize = false;
       # winNativeTitleBar = false;
