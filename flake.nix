@@ -52,11 +52,6 @@
     millennium.url = "github:trivaris/millennium?dir=packages/nix";
 
     # services
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";

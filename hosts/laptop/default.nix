@@ -10,8 +10,6 @@
     ./hardware-configuration.nix
     "${nixosModules}/desktop/${configFile.desktop.environment}" # import nix config to enable desktop environment from config file
     "${nixosModules}/programs/steam"
-    # "${nixosModules}/services/disko/btrfs_with_windows.nix"
-    # inputs.disko.nixosModules.default
   ];
 
   nixpkgs.overlays = [
