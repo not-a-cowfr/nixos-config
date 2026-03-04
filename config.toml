@@ -11,7 +11,7 @@ environment = "niri" # required
 # `ls /etc/nixos/modules/home-manager/desktop/<environment>` for options
 modules = []
 # `ls /etc/nixos/assets/wallpapers` for options
-wallpaper = "dark_fern"
+wallpaper = "foggy-forest"
 
 [hardware]
 keyboard = { layout = "us", variant = "" } # all required

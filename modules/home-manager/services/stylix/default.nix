@@ -23,7 +23,7 @@ in
   stylix = {
     enable = true;
 
-    image = "${inputs.self}/assets/wallpapers/${configFile.desktop.wallpaper}/image.jpg";
+    image = "${inputs.self}/assets/wallpapers/${configFile.desktop.wallpaper}.jpg";
     polarity = "dark";
     base16Scheme = {
       name = "Darcula Dark";

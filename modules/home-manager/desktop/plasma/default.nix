@@ -10,7 +10,6 @@
 {
   imports = [
     inputs.plasma-manager.homeModules.plasma-manager
-    ../../../../assets/wallpapers/${configFile.desktop.wallpaper}
   ];
 
   home.packages = with pkgs; [
