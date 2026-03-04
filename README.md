@@ -39,10 +39,8 @@ sudo nix-shell -p curl git vim tomlq --run "curl -fsSL https://not-a-cowfr.githu
 
 ### for config
 
-- [x] try out switching from ext4 to btrfs
-- [x] make a niri config
-- [x] convert my equicord json config to nixcord nix config
-- [x] get milennium for steam working
-- [x] sort programs stuff into categories that are easy to enable/disable different parts
+- [ ] have a file that lets you easily pick and choose what software you want enabled for a user/host along with certain features for that software
+- [ ] make neovim config
+- [ ] make hyprlock look better
 
 [config.toml]: ./config.toml
