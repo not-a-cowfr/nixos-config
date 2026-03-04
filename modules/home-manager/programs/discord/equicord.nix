@@ -1,4 +1,9 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  lib,
+  config,
+  ...
+}:
 {
   imports = [
     inputs.nixcord.homeModules.nixcord
@@ -39,5 +44,24 @@
         webScreenShareFixes.enable = true;
       };
     };
+  };
+
+  # equibop settings
+  home.file."${config.home.homeDirectory}/.config/equibop/settings.json".text = builtins.toJSON {
+    discordBranch = "canary";
+    tray = true;
+    minimizeToTray = true;
+    arRPC = true;
+    trayColor = "";
+    trayMainOverride = false;
+    spellCheckLanguages = [
+      "en-US"
+      "en"
+    ];
+    enableSplashScreen = true;
+    splashProgress = true;
+    clickTrayToShowHide = true;
+    badgeOnlyForMentions = true;
+    openLinksWithElectron = false;
   };
 }
