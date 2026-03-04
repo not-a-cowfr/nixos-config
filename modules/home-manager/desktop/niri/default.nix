@@ -12,14 +12,13 @@
     inputs.niri.homeModules.niri
     "${nhModules}/programs/hyprlock"
     "${nhModules}/programs/hypridle"
+    "${nhModules}/programs/fuzzel"
     # ../waybar/niri.nix
   ];
 
   home.packages = with pkgs; [
     xwayland-satellite
-    fuzzel
     kdePackages.dolphin
-    swaybg
 
     # necessary stuff
     brightnessctl
@@ -34,7 +33,7 @@
     settings = lib.mkMerge [
       (import ./binds.nix { inherit config; })
       (import ./input.nix { inherit configFile; })
-      (import ./spawn.nix { inherit configFile; })
+      ./spawn.nix
       ./layout.nix
       ./rules.nix
       {

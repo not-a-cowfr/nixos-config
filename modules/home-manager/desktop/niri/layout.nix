@@ -15,16 +15,6 @@
       proportion = 0.5;
     };
 
-    focus-ring = {
-      width = 2;
-      active = {
-        color = "#7fc8ff";
-      };
-      inactive = {
-        color = "#505050";
-      };
-    };
-
     shadow = {
       enable = true;
       softness = 30;
@@ -32,10 +22,10 @@
     };
   };
 
-  workspaces = {
-    "1".name = "terminal";
-    "2".name = "code";
-    "3".name = "personal";
-    "4".name = "gaming";
-  };
+  # workspaces = {
+  #   "1".name = "terminal";
+  #   "2".name = "code";
+  #   "3".name = "personal";
+  #   "4".name = "gaming";
+  # };
 }

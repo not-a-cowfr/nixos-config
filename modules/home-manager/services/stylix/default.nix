@@ -14,6 +14,12 @@ in
     inputs.stylix.homeModules.stylix
   ];
 
+  home.pointerCursor = {
+    package = pkgs.rose-pine-cursor;
+    name = "BreezeX-RosePine-Linux";
+    size = 30;
+  };
+
   stylix = {
     enable = true;
 

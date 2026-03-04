@@ -1,4 +1,4 @@
-{ configFile, ... }:
+{ ... }:
 {
   spawn-at-startup = [
     { command = [ "waybar" ]; }
@@ -13,12 +13,9 @@
         "store"
       ];
     }
-    {
-      command = [
-        "swaybg"
-        "-i"
-        "/etc/nixos/assets/wallpapers/${configFile.desktop.wallpaper}/image.jpg"
-      ];
-    }
   ];
+
+  switch-events = {
+    lid-close.action.spawn = [ "hyprlock" ];
+  };
 }
