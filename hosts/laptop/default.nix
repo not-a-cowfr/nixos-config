@@ -35,4 +35,6 @@
     allowedTCPPortRanges = [ ];
     allowedUDPPortRanges = [ ];
   };
+
+  services.power-profiles-daemon.enable = true;
 }

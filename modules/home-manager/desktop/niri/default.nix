@@ -14,6 +14,7 @@
     "${nhModules}/programs/hyprlock"
     "${nhModules}/programs/hypridle"
     "${nhModules}/programs/fuzzel"
+    "${nhModules}/programs/waybar"
     # ../waybar/niri.nix
   ];
 

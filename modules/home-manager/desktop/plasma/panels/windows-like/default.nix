@@ -8,7 +8,7 @@
         {
           name = "org.kde.plasma.kicker";
           config.general = {
-            icon = "/etc/nixos/assets/nixos.png";
+            icon = ../../../../../assets/nixos.png;
           };
         }
         "org.kde.plasma.marginsseparator"
