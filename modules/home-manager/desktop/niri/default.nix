@@ -10,6 +10,7 @@
 {
   imports = [
     inputs.niri.homeModules.niri
+    inputs.niri.homeModules.stylix
     "${nhModules}/programs/hyprlock"
     "${nhModules}/programs/hypridle"
     "${nhModules}/programs/fuzzel"
@@ -19,6 +20,7 @@
   home.packages = with pkgs; [
     xwayland-satellite
     kdePackages.dolphin
+    swaybg
 
     # necessary stuff
     brightnessctl
@@ -32,8 +34,8 @@
   programs.niri = {
     settings = lib.mkMerge [
       (import ./binds.nix { inherit config; })
+      (import ./spawn.nix { inherit config; })
       (import ./input.nix { inherit configFile; })
-      ./spawn.nix
       ./layout.nix
       ./rules.nix
       {
@@ -41,14 +43,17 @@
           skip-at-startup = true;
         };
 
-        overview = {
-          workspace-shadow.enable = false;
-        };
-
         prefer-no-csd = true;
 
         clipboard = {
           disable-primary = true;
+        };
+
+        gestures.hot-corners.enable = false;
+
+        cursor = {
+          size = config.home.pointerCursor.size;
+          theme = config.home.pointerCursor.name;
         };
       }
     ];

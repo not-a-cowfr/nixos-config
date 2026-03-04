@@ -1,6 +1,7 @@
 {
   layout = {
-    gaps = 16;
+    gaps = 10;
+    insert-hint.enable = false;
 
     center-focused-column = "never";
     background-color = "transparent";
@@ -17,8 +18,12 @@
 
     shadow = {
       enable = true;
-      softness = 30;
-      spread = 4;
+      softness = 10;
+      spread = 5;
+      offset = {
+        x = 0;
+        y = 0;
+      };
     };
   };
 

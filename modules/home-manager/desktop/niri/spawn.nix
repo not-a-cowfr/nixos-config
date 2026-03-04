@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   spawn-at-startup = [
     { command = [ "waybar" ]; }
@@ -11,6 +11,15 @@
         "--watch"
         "cliphist"
         "store"
+      ];
+    }
+    {
+      command = [
+        "swaybg"
+        "-i"
+        "${config.stylix.image}"
+        "-m"
+        "fill"
       ];
     }
   ];
