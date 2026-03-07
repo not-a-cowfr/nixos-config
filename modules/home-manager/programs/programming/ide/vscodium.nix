@@ -24,10 +24,8 @@
         rust-lang.rust-analyzer
 
         # misc syntax highlighting
-        # beaglefoot.awk-ide-vscode
         skellock.just
-        # bbenoist.Nix
-        # jnoortheen.nix-ide # need to fix some issue with the formatter before enabling this
+        # jnoortheen.nix-ide
         # TheNuProjectContributors.vscode-nushell-lang
         ziglang.vscode-zig
 

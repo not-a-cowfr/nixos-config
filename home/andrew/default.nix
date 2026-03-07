@@ -27,6 +27,17 @@
     "${nhModules}/programs/discord/equicord.nix"
   ];
 
+  looks = {
+    enable = true;
+    theme = "darcula";
+    wallpaper = "foggy-forest";
+    opacity = 0.8;
+    font = {
+      name = "ComicShannsMono Nerd Font Mono";
+      package = pkgs.nerd-fonts.comic-shanns-mono;
+    };
+  };
+
   home.packages = with pkgs; [
     protonmail-desktop
     vlc
