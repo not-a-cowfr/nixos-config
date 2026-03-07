@@ -17,6 +17,19 @@
     inputs.millennium.overlays.default
   ];
 
+  services.thinkfan = {
+    enable = true;
+
+    # max speed always
+    levels = [
+      [
+        7
+        0
+        32767
+      ]
+    ];
+  };
+
   # use cachyos rc kernel
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-rc;
 
