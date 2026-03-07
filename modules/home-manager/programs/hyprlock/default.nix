@@ -13,7 +13,7 @@
       label = {
         text = "$TIME";
         font_size = 65;
-        font_family = "Cantarell Bold";
+        font_family = config.stylix.fonts.monospace.name;
 
         position = "0, 0";
         halign = "center";
