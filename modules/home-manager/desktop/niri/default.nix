@@ -22,12 +22,20 @@
     xwayland-satellite
     kdePackages.dolphin
     swaybg
+    cliphist
 
     # necessary stuff
     brightnessctl
     wireplumber
     sway-contrib.grimshot
     wl-clipboard
+
+    (writers.writeNuBin "clip-hist-selector" ''
+      ${lib.getExe pkgs.cliphist} list
+        | cut -f 2-
+        | ${lib.getExe pkgs.fuzzel} --dmenu --placeholder "Clipboard"
+        | ${pkgs.wl-clipboard}/bin/wl-copy
+    '')
   ];
 
   services.polkit-gnome.enable = true;

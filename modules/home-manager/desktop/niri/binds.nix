@@ -6,6 +6,7 @@
     "Mod+E".action = spawn "dolphin";
     "Alt+Space".action = spawn "fuzzel";
     "Ctrl+Shift+Escape".action = spawn "ghostty" "-e" "btop";
+    "Mod+Y".action = spawn "clip-hist-selector";
 
     XF86AudioMicMute = {
       allow-when-locked = true;
