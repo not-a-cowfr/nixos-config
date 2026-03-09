@@ -47,6 +47,15 @@
         ];
       };
     };
+
+    programs = {
+      browsers = {
+        zen = {
+          enable = true;
+          useExperimentalConfig = false;
+        };
+      };
+    };
   };
 
   home.packages = with pkgs; [
