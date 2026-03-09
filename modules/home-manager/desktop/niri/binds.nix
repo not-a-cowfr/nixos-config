@@ -6,7 +6,7 @@
     "Mod+E".action = spawn "dolphin";
     "Alt+Space".action = spawn "fuzzel";
     "Ctrl+Shift+Escape".action = spawn "ghostty" "-e" "btop";
-    "Mod+Y".action = spawn "clip-hist-selector";
+    "Mod+V".action = spawn "clip-history-selector";
 
     XF86AudioMicMute = {
       allow-when-locked = true;
@@ -79,8 +79,8 @@
     "Mod+Shift+Down".action = set-window-height "+10%";
     "Mod+Shift+Right".action = set-window-width "+10%";
 
-    "Mod+V".action = toggle-window-floating;
-    "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
+    "Mod+Y".action = toggle-window-floating;
+    "Mod+Shift+Y".action = switch-focus-between-floating-and-tiling;
 
     "Print".action = spawn "grimshot" "--notify" "savecopy" "output";
     "Mod+Shift+S".action = spawn "grimshot" "--notify" "savecopy" "area";
