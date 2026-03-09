@@ -24,7 +24,7 @@
     # "${nhModules}/programs/razer"
     "${nhModules}/programs/shell/nushell"
     "${nhModules}/programs/terminal/ghostty.nix"
-    "${nhModules}/programs/discord/equicord.nix"
+    "${nhModules}/programs/chat/discord/equicord.nix"
   ];
 
   looks = {
@@ -53,6 +53,15 @@
         zen = {
           enable = true;
           useExperimentalConfig = false;
+        };
+      };
+
+      chat = {
+        discord = {
+          equicord = {
+            enable = true;
+            equibop.enable = true;
+          };
         };
       };
 
