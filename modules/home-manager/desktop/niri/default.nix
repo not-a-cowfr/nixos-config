@@ -11,10 +11,10 @@
   imports = [
     inputs.niri.homeModules.niri
     inputs.niri.homeModules.stylix
-    "${nhModules}/programs/hyprlock"
-    "${nhModules}/programs/hypridle"
-    "${nhModules}/programs/fuzzel"
-    "${nhModules}/programs/waybar"
+    "${nhModules}/programs/hypr/lock"
+    "${nhModules}/programs/hypr/idle"
+    "${nhModules}/programs/desktop/fuzzel"
+    "${nhModules}/programs/desktop/waybar"
     # ../waybar/niri.nix
   ];
 

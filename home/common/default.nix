@@ -10,7 +10,7 @@
   imports = [
     "${nhModules}/desktop/${configFile.desktop.environment}" # import nix config for desktop environment from config file
     # default apps
-    "${nhModules}/programs/gpg"
+    "${nhModules}/programs/security/gpg"
     "${nhModules}/programs/cli/fzf.nix"
     "${nhModules}/programs/cli/fastfetch.nix"
     "${nhModules}/services/flatpak"
