@@ -3,15 +3,12 @@
 host = "laptop" # required
 # `ls /etc/nixos/home` for options, ignore `common`
 users = ["andrew"]
-disk = "nvme0n1"   # required if using this config to install nixos
 
 [desktop]
 # `ls /etc/nixos/modules/nixos/desktop` for options
 environment = "niri" # required
 # `ls /etc/nixos/modules/home-manager/desktop/<environment>` for options
 modules = []
-# `ls /etc/nixos/assets/wallpapers` for options
-wallpaper = "foggy-forest"
 
 [hardware]
 keyboard = { layout = "us", variant = "" } # all required
