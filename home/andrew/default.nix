@@ -76,6 +76,34 @@
         fzf.enable = true;
         starship.enable = true;
       };
+
+      desktop = {
+        fuzzel.enable = true;
+        waybar = {
+          enable = true;
+          modules = {
+            left = [
+              "niri/workspaces"
+              "cpu"
+              "memory"
+              "tray"
+              "custom/music"
+            ];
+            center = [
+              "clock"
+            ];
+            right = [
+              "network"
+              "bluetooth"
+              "backlight"
+              "pulseaudio"
+              "battery"
+              "power-profiles-daemon"
+              "custom/power"
+            ];
+          };
+        };
+      };
     };
   };
 

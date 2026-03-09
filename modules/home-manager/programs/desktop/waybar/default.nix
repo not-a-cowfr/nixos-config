@@ -1,5 +1,20 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
+  cfg = config.features.programs.desktop.waybar;
+
+  mkModulesConfig =
+    side:
+    lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "list of modules to add on the ${side} side of waybar";
+    };
+
   hexToRgba =
     hex: alpha:
     let
@@ -34,161 +49,174 @@ let
   '';
 in
 {
-  home.packages = with pkgs; [
-    playerctl
-    blueman
-    nwg-bar
-  ];
+  options.features.programs.desktop.waybar = {
+    enable = lib.mkEnableOption "waybar";
+    modules = {
+      left = mkModulesConfig "left";
+      center = mkModulesConfig "middle";
+      right = mkModulesConfig "right";
+    };
+  };
 
-  stylix.targets.waybar.enable = false;
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      playerctl
+      blueman
+      nwg-bar
+    ];
 
-  programs.waybar = {
-    enable = true;
+    stylix.targets.waybar.enable = false;
 
-    settings = {
-      mainBar = {
-        layer = "top";
-        "modules-left" = [
-          "niri/workspaces"
-          "cpu"
-          "memory"
-          "tray"
-          "custom/music"
-        ];
-        "modules-center" = [
-          "clock"
-        ];
-        "modules-right" = [
-          "network"
-          "bluetooth"
-          "backlight"
-          "pulseaudio"
-          "battery"
-          "power-profiles-daemon"
-          "custom/power"
-        ];
-        pulseaudio = {
-          tooltip = false;
-          "scroll-step" = 5;
-          format = "{icon} {volume}%";
-          "format-muted" = "{icon} {volume}%";
-          "on-click" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          "format-icons" = {
-            default = [
-              ""
-              ""
-              ""
+    programs.waybar = {
+      enable = true;
+
+      settings = {
+        mainBar = {
+          layer = "top";
+
+          "modules-left" = cfg.modules.left;
+          "modules-center" = cfg.modules.center;
+          "modules-right" = cfg.modules.right;
+
+          pulseaudio = {
+            tooltip = false;
+            "scroll-step" = 5;
+            format = "{icon} {volume}%";
+            "format-muted" = "{icon} {volume}%";
+            "on-click" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+            "format-icons" = {
+              default = [
+                ""
+                ""
+                ""
+              ];
+            };
+          };
+
+          network = {
+            tooltip = false;
+            "format-wifi" = "  {essid}";
+            "format-ethernet" = "󰈀 {ifname} | {bandwidthUpBytes} {bandwidthDownBytes}";
+          };
+
+          backlight = {
+            tooltip = false;
+            format = " {}%";
+            interval = 1;
+            "on-scroll-up" = "brightnessctl --class=backlight set +5%";
+            "on-scroll-down" = "brightnessctl --class=backlight set 5%-";
+          };
+
+          battery = {
+            states = {
+              good = 95;
+              warning = 30;
+              critical = 10;
+            };
+
+            format = "{icon}  {capacity}%";
+            "format-charging" = "  {capacity}%";
+            "format-plugged" = "  {capacity}%";
+            "format-icons" = [
+              ""
+              ""
+              ""
+              ""
+              ""
             ];
           };
-        };
-        network = {
-          tooltip = false;
-          "format-wifi" = "  {essid}";
-          "format-ethernet" = "󰈀 {ifname} | {bandwidthUpBytes} {bandwidthDownBytes}";
-        };
-        backlight = {
-          tooltip = false;
-          format = " {}%";
-          interval = 1;
-          "on-scroll-up" = "brightnessctl --class=backlight set +5%";
-          "on-scroll-down" = "brightnessctl --class=backlight set 5%-";
-        };
-        battery = {
-          states = {
-            good = 95;
-            warning = 30;
-            critical = 10;
+
+          tray = {
+            "icon-size" = 18;
+            spacing = 10;
           };
-          format = "{icon}  {capacity}%";
-          "format-charging" = "  {capacity}%";
-          "format-plugged" = "  {capacity}%";
-          "format-icons" = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-        };
-        tray = {
-          "icon-size" = 18;
-          spacing = 10;
-        };
-        clock = {
-          format = "{:%I:%M  %Y-%m-%d}";
-          tooltip = false;
-        };
-        cpu = {
-          interval = 15;
-          format = "  {usage}%";
-          "max-length" = 10;
-        };
-        memory = {
-          interval = 15;
-          format = "  {}%";
-          "max-length" = 10;
-        };
-        bluetooth = {
-          format = " {status}";
-          "format-connected" = " {device_alias}";
-          "format-connected-battery" = " {device_alias} {device_battery_percentage}%";
-          "tooltip-format" = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
-          "tooltip-format-connected" =
-            "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
-          "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
-          "tooltip-format-enumerate-connected-battery" =
-            "{device_alias}\t{device_address}\t{device_battery_percentage}%";
-          "on-click" = "blueman-manager";
-        };
-        "custom/launcher" = {
-          format = "∞";
-          "on-click" = "fuzzel";
-          "on-click-right" = "killall fuzzel";
-        };
-        "custom/power" = {
-          format = "⏻";
-          "on-click" = "nwg-bar";
-        };
-        user = {
-          format = "{user}";
-          interval = 60;
-          height = 30;
-          width = 30;
-          icon = true;
-          "on-click" = "fuzzel";
-          "on-click-right" = "killall fuzzel";
-        };
-        "custom/notifications" = {
-          format = "";
-        };
-        "niri/workspaces" = {
-          format = "{icon}";
-          "format-icons" = {
-            active = "";
-            default = "";
+
+          clock = {
+            format = "{:%I:%M  %Y-%m-%d}";
+            tooltip = false;
           };
-        };
-        "power-profiles-daemon" = {
-          format = "{icon}";
-          "tooltip-format" = "Power profile: {profile}\nDriver: {driver}";
-          tooltip = true;
-          "format-icons" = {
-            default = "";
-            performance = "";
-            balanced = "";
-            "power-saver" = "";
+
+          cpu = {
+            interval = 15;
+            format = "  {usage}%";
+            "max-length" = 10;
           };
-        };
-        "custom/music" = {
-          exec = builtins.readFile ./spotify.sh;
-          interval = 2;
-          "on-click" = "playerctl play-pause";
-          "on-scroll-up" = "playerctl next";
-          "on-scroll-down" = "playerctl previous";
+
+          memory = {
+            interval = 15;
+            format = "  {}%";
+            "max-length" = 10;
+          };
+
+          bluetooth = {
+            format = " {status}";
+            "format-connected" = " {device_alias}";
+            "format-connected-battery" = " {device_alias} {device_battery_percentage}%";
+            "tooltip-format" = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+            "tooltip-format-connected" =
+              "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+            "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
+            "tooltip-format-enumerate-connected-battery" =
+              "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+            "on-click" = "blueman-manager";
+          };
+
+          "custom/launcher" = {
+            format = "∞";
+            "on-click" = "fuzzel";
+            "on-click-right" = "killall fuzzel";
+          };
+
+          "custom/power" = {
+            format = "⏻";
+            "on-click" = "nwg-bar";
+          };
+
+          user = {
+            format = "{user}";
+            interval = 60;
+            height = 30;
+            width = 30;
+            icon = true;
+            "on-click" = "fuzzel";
+            "on-click-right" = "killall fuzzel";
+          };
+
+          "custom/notifications" = {
+            format = "";
+          };
+
+          "niri/workspaces" = {
+            format = "{icon}";
+            "format-icons" = {
+              active = "";
+              default = "";
+            };
+          };
+
+          "power-profiles-daemon" = {
+            format = "{icon}";
+            "tooltip-format" = "Power profile: {profile}\nDriver: {driver}";
+            tooltip = true;
+            "format-icons" = {
+              default = "";
+              performance = "";
+              balanced = "";
+              "power-saver" = "";
+            };
+          };
+
+          "custom/music" = {
+            exec = builtins.readFile ./spotify.sh;
+            interval = 2;
+            "on-click" = "playerctl play-pause";
+            "on-scroll-up" = "playerctl next";
+            "on-scroll-down" = "playerctl previous";
+          };
         };
       };
-    };
 
-    style = cssBase16Colors + (builtins.readFile ./style.css);
+      style = cssBase16Colors + (builtins.readFile ./style.css);
+    };
   };
 }

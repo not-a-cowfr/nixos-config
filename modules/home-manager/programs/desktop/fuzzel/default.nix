@@ -1,5 +1,13 @@
+{ config, lib, ... }:
+let
+  cfg = config.features.programs.desktop.fuzzel;
+in
 {
-  programs.fuzzel = {
-    enable = true;
+  options.features.programs.desktop.fuzzel.enable = lib.mkEnableOption "fuzzel";
+
+  config = lib.mkIf cfg.enable {
+    programs.fuzzel = {
+      enable = true;
+    };
   };
 }
