@@ -21,7 +21,7 @@ in
       ];
 
       sessionVariables = {
-        BROWSER = "zen";
+        BROWSER = "zen-browser";
       };
     };
   };
