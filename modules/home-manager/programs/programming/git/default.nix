@@ -1,23 +1,46 @@
-{ pkgs, lib, ... }:
 {
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  cfg = config.features.programs.programming.git;
+in
+{
+  options.features.programs.programming.git = {
+    enable = lib.mkEnableOption "git";
 
-    settings = {
-      # todo: dont hardcode user info
-      user = {
-        name = "not a cow";
-        email = "104355555+not-a-cowfr@users.noreply.github.com";
+    username = lib.mkOption {
+      type = lib.types.str;
+      description = "name to sign commits with";
+    };
+    email = lib.mkOption {
+      type = lib.types.str;
+      description = "email to sign commits with";
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    programs.git = {
+      enable = true;
+      lfs.enable = true;
+
+      settings = {
+        # todo: dont hardcode user info
+        user = {
+          name = cfg.username;
+          email = cfg.email;
+        };
+
+        pull.rebase = true;
+        push.autoSetupRemote = true;
+
+        init.defaultBranch = "main";
+        credential.helper = "store";
+
+        safe.directory = [ "/etc/nixos" ];
       };
-
-      pull.rebase = true;
-      push.autoSetupRemote = true;
-
-      init.defaultBranch = "main";
-      credential.helper = "store";
-
-      safe.directory = [ "/etc/nixos" ];
     };
   };
 }

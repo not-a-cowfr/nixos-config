@@ -17,7 +17,7 @@
     "${nhModules}/programs/programming/languages/python.nix"
     "${nhModules}/programs/programming/git"
     "${nhModules}/programs/programming/git/lazygit.nix"
-    "${nhModules}/programs/programming/git/github.nix"
+    "${nhModules}/programs/programming/git/github/cli.nix"
     "${nhModules}/programs/programming/ide/vscodium.nix"
     "${nhModules}/programs/programming/ide/idea.nix"
     "${nhModules}/programs/programming/ide/vim.nix"
@@ -120,6 +120,20 @@
 
       music = {
         spicetify.enable = true;
+      };
+
+      programming = {
+        git = {
+          enable = true;
+          username = "not a cow";
+          email = "104355555+not-a-cowfr@users.noreply.github.com";
+
+          github = {
+            cli.enable = true;
+          };
+
+          lazygit.enable = true;
+        };
       };
     };
   };
