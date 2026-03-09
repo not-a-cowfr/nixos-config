@@ -134,6 +134,10 @@
 
           lazygit.enable = true;
         };
+
+        ide = {
+          vscodium.enable = true;
+        };
       };
     };
   };
