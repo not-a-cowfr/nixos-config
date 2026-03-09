@@ -1,27 +1,32 @@
 {
-  configFile,
   config,
-  pkgs,
+  configFile,
+  lib,
   ...
 }:
+let
+  cfg = config.features.programs.terminal.ghostty;
+in
 {
-  programs.ghostty = {
-    enable = true;
+  options.features.programs.terminal.ghostty.enable = lib.mkEnableOption "ghostty";
 
-    settings = {
-      font-size = 10;
+  config = lib.mkIf cfg.enable {
+    programs.ghostty = {
+      enable = true;
 
-      keybind = "ctrl+a=toggle_tab_overview";
-      window-show-tab-bar = "never";
+      settings = {
+        font-size = 10;
 
-      confirm-close-surface = false;
+        keybind = "ctrl+a=toggle_tab_overview";
+        window-show-tab-bar = "never";
 
-      cursor-style = "bar";
-      cursor-style-blink = false;
+        confirm-close-surface = false;
 
-      command = "nu";
+        cursor-style = "bar";
+        cursor-style-blink = false;
 
-      maximize = configFile.desktop.environment != "niri";
+        maximize = configFile.desktop.environment != "niri";
+      };
     };
   };
 }

@@ -153,6 +153,10 @@
       shells = {
         nushell.enable = true;
       };
+
+      terminal = {
+        ghostty.enable = true;
+      };
     };
   };
 

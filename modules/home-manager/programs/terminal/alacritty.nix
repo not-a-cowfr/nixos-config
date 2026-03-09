@@ -1,30 +1,34 @@
-{ config, ... }:
 {
-  programs.alacritty = {
-    enable = true;
+  config,
+  configFile,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.features.programs.terminal.alacritty;
+in
+{
+  options.features.programs.terminal.alacritty.enable = lib.mkEnableOption "Alacritty";
 
-    settings = {
-      window = {
-        startup_mode = "Maximized";
-      };
+  config = lib.mkIf cfg.enable {
+    programs.alacritty = {
+      enable = true;
 
-      # font = {
-      #   normal = {
-      #     family = "ComicShannsMono Nerd Font Mono";
-      #   };
-      # };
-
-      cursor = {
-        style = {
-          shape = "Beam";
-          blinking = "Off";
+      settings = {
+        window = {
+          startup_mode = lib.mkIf (configFile.desktop.environment != "niri") "Maximized";
         };
-      };
 
-      terminal = {
-        osc52 = "CopyPaste";
-        shell = {
-          program = "${config.home.homeDirectory}/.nix-profile/bin/nu";
+        cursor = {
+          style = {
+            shape = "Beam";
+            blinking = "Off";
+          };
+        };
+
+        terminal = {
+          osc52 = "CopyPaste";
         };
       };
     };
