@@ -122,7 +122,6 @@
             nhModules = "${self}/modules/home-manager";
           };
           modules = [
-            ./modules/home-manager/config
             ./home/${username}
             ./home/common
           ];
