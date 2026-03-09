@@ -13,7 +13,7 @@
     "${nhModules}/programs/cli/btop.nix"
     "${nhModules}/programs/music/spicetify.nix"
     "${nhModules}/programs/programming/languages/rust.nix"
-    "${nhModules}/programs/programming/languages/typescript.nix"
+    "${nhModules}/programs/programming/languages/javascript.nix"
     "${nhModules}/programs/programming/languages/python.nix"
     "${nhModules}/programs/programming/git"
     "${nhModules}/programs/programming/git/lazygit.nix"
@@ -137,6 +137,12 @@
 
         ide = {
           vscodium.enable = true;
+        };
+
+        languages = {
+          javascript.enable = true;
+          python.enable = true;
+          rust.enable = true;
         };
       };
     };
