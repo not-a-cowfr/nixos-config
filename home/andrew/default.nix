@@ -145,6 +145,10 @@
           rust.enable = true;
         };
       };
+
+      security = {
+        gpg.enable = true;
+      };
     };
   };
 
