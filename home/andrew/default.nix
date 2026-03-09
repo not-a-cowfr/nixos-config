@@ -6,8 +6,14 @@
     wallpaper = "foggy-forest";
     opacity = 0.8;
     font = {
-      name = "ComicShannsMono Nerd Font Mono";
-      package = pkgs.nerd-fonts.comic-shanns-mono;
+      regular = {
+        name = "Comic Sans MS";
+        package = pkgs.corefonts;
+      };
+      mono = {
+        name = "ComicShannsMono Nerd Font Mono";
+        package = pkgs.nerd-fonts.comic-shanns-mono;
+      };
     };
   };
   features = {

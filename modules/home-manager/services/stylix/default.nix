@@ -32,15 +32,29 @@ in
     };
 
     font = {
-      name = lib.mkOption {
-        type = lib.types.str;
-        default = "JetBrains Mono";
-        description = "font to use";
+      regular = {
+        name = lib.mkOption {
+          type = lib.types.str;
+          default = "DejaVu Sans";
+          description = "font to use";
+        };
+        package = lib.mkOption {
+          type = lib.types.package;
+          default = pkgs.dejavu_fonts;
+          description = "font package to use";
+        };
       };
-      package = lib.mkOption {
-        type = lib.types.package;
-        default = pkgs.jetbrains-mono;
-        description = "font package to use";
+      mono = {
+        name = lib.mkOption {
+          type = lib.types.str;
+          default = "JetBrains Mono";
+          description = "font to use";
+        };
+        package = lib.mkOption {
+          type = lib.types.package;
+          default = pkgs.jetbrains-mono;
+          description = "font package to use";
+        };
       };
       # size = {
       #   small = lib.mkOption {
@@ -93,18 +107,9 @@ in
       image = "${inputs.self}/assets/wallpapers/${cfg.wallpaper}.jpg";
 
       fonts = {
-        sansSerif = {
-          package = cfg.font.package;
-          name = cfg.font.name;
-        };
-        serif = {
-          package = cfg.font.package;
-          name = cfg.font.name;
-        };
-        monospace = {
-          package = cfg.font.package;
-          name = cfg.font.name;
-        };
+        sansSerif = cfg.font.regular;
+        serif = cfg.font.regular;
+        monospace = cfg.font.mono;
       };
 
       opacity = {
