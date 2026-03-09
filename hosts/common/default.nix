@@ -179,6 +179,7 @@
       "libvirtd"
       "vboxusers"
     ];
+    # id like to be able to set this via a hm option `features.programs.shells.default`
     shell = pkgs.nushell;
   }) enabledUsers;
 

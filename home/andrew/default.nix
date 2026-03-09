@@ -22,7 +22,7 @@
     "${nhModules}/programs/programming/ide/idea.nix"
     "${nhModules}/programs/programming/ide/vim.nix"
     # "${nhModules}/programs/razer"
-    "${nhModules}/programs/shell/nushell"
+    "${nhModules}/programs/shells/nushell"
     "${nhModules}/programs/terminal/ghostty.nix"
     "${nhModules}/programs/chat/discord/equicord.nix"
   ];
@@ -148,6 +148,10 @@
 
       security = {
         gpg.enable = true;
+      };
+
+      shells = {
+        nushell.enable = true;
       };
     };
   };
