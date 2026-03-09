@@ -1,0 +1,12 @@
+- docs: documentation of stuff
+- home: per-user configurations
+- hosts: per-host configurations
+- modules: reusable, configurable modules
+  - home-manager: home-manager specific modules
+    - desktop: desktop environment configurations
+    - programs: app configurations
+    - services: service configurations
+  - nixos: nixos specific modules
+    - desktop: desktop environment configurations, mostly just enabling stuff
+    - programs: app configurations
+- overlays: nixpkgs overlays, though overlays are not always put here (probably need to change that)
