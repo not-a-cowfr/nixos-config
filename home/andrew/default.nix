@@ -104,6 +104,10 @@
           };
         };
       };
+
+      # hardware = {
+      #   razer.enable = false;
+      # };
     };
   };
 
