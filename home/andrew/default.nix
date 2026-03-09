@@ -1,32 +1,5 @@
+{ pkgs, ... }:
 {
-  nhModules,
-  pkgs,
-  inputs,
-  ...
-}:
-{
-  imports = [
-    "${nhModules}/programs/browser/zen.nix"
-    "${nhModules}/programs/cli/bat.nix"
-    "${nhModules}/programs/cli/direnv.nix"
-    "${nhModules}/programs/cli/starship.nix"
-    "${nhModules}/programs/cli/btop.nix"
-    "${nhModules}/programs/music/spicetify.nix"
-    "${nhModules}/programs/programming/languages/rust.nix"
-    "${nhModules}/programs/programming/languages/javascript.nix"
-    "${nhModules}/programs/programming/languages/python.nix"
-    "${nhModules}/programs/programming/git"
-    "${nhModules}/programs/programming/git/lazygit.nix"
-    "${nhModules}/programs/programming/git/github/cli.nix"
-    "${nhModules}/programs/programming/ide/vscodium.nix"
-    "${nhModules}/programs/programming/ide/idea.nix"
-    "${nhModules}/programs/programming/ide/vim.nix"
-    # "${nhModules}/programs/razer"
-    "${nhModules}/programs/shells/nushell"
-    "${nhModules}/programs/terminal/ghostty.nix"
-    "${nhModules}/programs/chat/discord/equicord.nix"
-  ];
-
   looks = {
     enable = true;
     theme = "darcula";

@@ -8,6 +8,11 @@ let
   cfg = config.features.programs.programming.git;
 in
 {
+  imports = [
+    ./github
+    ./lazygit.nix
+  ];
+
   options.features.programs.programming.git = {
     enable = lib.mkEnableOption "git";
 

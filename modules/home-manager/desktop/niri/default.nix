@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  nhModules,
   config,
   inputs,
   configFile,
@@ -11,11 +10,6 @@
   imports = [
     inputs.niri.homeModules.niri
     inputs.niri.homeModules.stylix
-    "${nhModules}/programs/hypr/lock"
-    "${nhModules}/programs/hypr/idle"
-    "${nhModules}/programs/desktop/fuzzel"
-    "${nhModules}/programs/desktop/waybar"
-    # ../waybar/niri.nix
   ];
 
   home.packages = with pkgs; [
