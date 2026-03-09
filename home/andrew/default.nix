@@ -37,13 +37,15 @@
       package = pkgs.nerd-fonts.comic-shanns-mono;
     };
   };
-  features.services = {
-    flatpak = {
-      enable = true;
-      packages = [
-        "org.vinegarhq.Sober"
-        "org.vinegarhq.Vinegar"
-      ];
+  features = {
+    services = {
+      flatpak = {
+        enable = true;
+        packages = [
+          "org.vinegarhq.Sober"
+          "org.vinegarhq.Vinegar"
+        ];
+      };
     };
   };
 

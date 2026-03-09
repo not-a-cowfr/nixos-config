@@ -47,6 +47,7 @@
       (import ./input.nix { inherit configFile; })
       ./layout.nix
       ./rules.nix
+      ./animations/fold.nix
       {
         hotkey-overlay = {
           skip-at-startup = true;
