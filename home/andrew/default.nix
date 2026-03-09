@@ -55,6 +55,18 @@
           useExperimentalConfig = false;
         };
       };
+
+      cli = {
+        bat.enable = true;
+        btop.enable = true;
+        direnv.enable = true;
+        fastfetch = {
+          enable = true;
+          image = "nixos-mlm";
+        };
+        fzf.enable = true;
+        starship.enable = true;
+      };
     };
   };
 
