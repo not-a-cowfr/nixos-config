@@ -12,7 +12,7 @@
   stylix.targets.zen-browser.profileNames = [ "default" ];
 
   home.sessionVariables = {
-    BROWSER = "zen";
+    BROWSER = "zen-twilight";
   };
 
   xdg.mimeApps =
