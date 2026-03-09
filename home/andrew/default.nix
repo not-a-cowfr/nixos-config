@@ -108,6 +108,15 @@
       # hardware = {
       #   razer.enable = false;
       # };
+
+      hypr = {
+        lock.enable = true;
+
+        idle = {
+          enable = true;
+          timeout = 300;
+        };
+      };
     };
   };
 

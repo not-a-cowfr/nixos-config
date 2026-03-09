@@ -1,30 +1,38 @@
-{ pkgs, ... }:
+{ config, lib, ... }:
+let
+  cfg = config.features.programs.hypr.idle;
+in
 {
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
-        before_sleep_cmd = "loginctl lock-session";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-      };
-      listener = [
-        {
-          timeout = 300;
-          on-timeout = "hyprlock";
-        }
-        {
-          timeout = 360;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
-        {
-          timeout = 600;
-          on-timeout = "systemctl suspend";
-        }
-      ];
+  options.features.programs.hypr.idle = {
+    enable = lib.mkEnableOption "hypridle";
+    timeout = lib.mkOption {
+      type = lib.types.int;
+      default = 300;
+      description = "time in seconds before hyprlock activates, after double this time the system will suspend";
     };
   };
-  wayland.windowManager.hyprland.settings.exec-once = [ "hypridle" ];
+
+  config = lib.mkIf cfg.enable {
+    services.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          ignore_dbus_inhibit = false;
+          lock_cmd = "hyprlock";
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+        listener = [
+          {
+            timeout = cfg.timeout;
+            on-timeout = "hyprlock";
+          }
+          {
+            timeout = cfg.timeout * 2;
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
+    };
+  };
 }

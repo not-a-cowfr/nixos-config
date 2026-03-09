@@ -1,30 +1,32 @@
+{ config, lib, ... }:
+let
+  cfg = config.features.programs.hypr.lock;
+in
 {
-  lib,
-  config,
-  configFile,
-  ...
-}:
-{
-  programs.hyprlock = {
-    enable = true;
-    settings = {
-      ignore_empty_input = true;
+  options.features.programs.hypr.lock.enable = lib.mkEnableOption "hyprlock";
 
-      label = {
-        text = "$TIME";
-        font_size = 65;
-        font_family = config.stylix.fonts.monospace.name;
+  config = lib.mkIf cfg.enable {
+    programs.hyprlock = {
+      enable = true;
+      settings = {
+        ignore_empty_input = true;
 
-        position = "0, 0";
-        halign = "center";
-        valign = "center";
-      };
+        label = {
+          text = "$TIME";
+          font_size = 65;
+          font_family = config.stylix.fonts.monospace.name;
 
-      input-field = {
-        size = "250, 50";
-        position = "0, -80";
-        outline_thickness = 0;
-        placeholder_text = "";
+          position = "0, 0";
+          halign = "center";
+          valign = "center";
+        };
+
+        input-field = {
+          size = "250, 50";
+          position = "0, -80";
+          outline_thickness = 0;
+          placeholder_text = "";
+        };
       };
     };
   };
