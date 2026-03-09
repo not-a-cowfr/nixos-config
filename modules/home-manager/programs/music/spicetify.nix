@@ -2,9 +2,12 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 let
+  cfg = config.features.programs.music.spicetify;
+
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
@@ -12,28 +15,32 @@ in
     inputs.spicetify-nix.homeManagerModules.spicetify
   ];
 
-  stylix.targets.spicetify.colors.enable = false;
+  options.features.programs.music.spicetify.enable = lib.mkEnableOption "spicetify";
 
-  programs.spicetify = {
-    enable = true;
+  config = lib.mkIf cfg.enable {
+    stylix.targets.spicetify.colors.enable = false;
 
-    theme = spicePkgs.themes.lucid;
+    programs.spicetify = {
+      enable = true;
 
-    enabledExtensions = with spicePkgs.extensions; [
-      keyboardShortcut
-      shuffle
-      groupSession
-      seekSong
-      playlistIcons
-      fullAlbumDate
-      skipStats
-      copyToClipboard
-      betterGenres
-      adblock
-      playNext
-      beautifulLyrics
-      queueTime
-      coverAmbience
-    ];
+      theme = spicePkgs.themes.lucid;
+
+      enabledExtensions = with spicePkgs.extensions; [
+        keyboardShortcut
+        shuffle
+        groupSession
+        seekSong
+        playlistIcons
+        fullAlbumDate
+        skipStats
+        copyToClipboard
+        betterGenres
+        adblock
+        playNext
+        beautifulLyrics
+        queueTime
+        coverAmbience
+      ];
+    };
   };
 }

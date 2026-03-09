@@ -117,6 +117,10 @@
           timeout = 300;
         };
       };
+
+      music = {
+        spicetify.enable = true;
+      };
     };
   };
 
