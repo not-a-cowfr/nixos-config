@@ -105,7 +105,7 @@
         git = {
           enable = true;
           username = "not a cow";
-          email = "104355555+not-a-cowfr@users.noreply.github.com";
+          email = "agielow@proton.me";
 
           github = {
             cli.enable = true;
