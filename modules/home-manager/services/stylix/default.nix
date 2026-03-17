@@ -95,11 +95,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.pointerCursor = {
-      package = cfg.cursor.package;
-      name = cfg.cursor.name;
-      size = cfg.cursor.size;
-    };
+    home.pointerCursor = cfg.cursor;
 
     stylix = {
       enable = true;

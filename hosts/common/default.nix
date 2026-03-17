@@ -242,6 +242,7 @@
 
   environment.systemPackages = with pkgs; [
     efibootmgr
+    
   ];
 
   environment.shells = [ pkgs.nushell ];

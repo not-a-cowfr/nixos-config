@@ -80,7 +80,7 @@
     "Mod+Shift+Right".action = set-window-width "+10%";
 
     "Mod+Y".action = toggle-window-floating;
-    "Mod+Shift+Y".action = switch-focus-between-floating-and-tiling;
+    "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
 
     "Print".action = spawn "grimshot" "--notify" "savecopy" "output";
     "Mod+Shift+S".action = spawn "grimshot" "--notify" "savecopy" "area";
