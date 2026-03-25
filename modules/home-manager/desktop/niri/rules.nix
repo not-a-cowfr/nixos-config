@@ -23,6 +23,9 @@
       clip-to-geometry = true;
       default-column-width.proportion = 1. / 3.;
     }
+    # {
+    #   open-maximized-to-edges = true;
+    # }
   ];
 
   layer-rules = [

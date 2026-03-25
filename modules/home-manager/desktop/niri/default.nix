@@ -52,6 +52,10 @@
           size = config.home.pointerCursor.size;
           theme = config.home.pointerCursor.name;
         };
+
+        debug = {
+          honor-xdg-activation-with-invalid-serial = [ ];
+        };
       }
     ];
   };

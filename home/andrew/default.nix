@@ -144,7 +144,6 @@
     vlc
     prismlauncher
     zoom-us
-    stoat-desktop
     nixfmt
     gparted
     kdePackages.isoimagewriter
