@@ -50,6 +50,9 @@
   services = {
     upower.enable = true;
     power-profiles-daemon.enable = true;
+    usbmuxd.enable = true;
+  };
+
   environment.corePackages = with pkgs; [ kdePackages.kio-admin ];
 
   };
