@@ -1,15 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   looks = {
     enable = true;
     theme = "darcula";
-    wallpaper = "foggy-forest";
+    wallpaper = "dusk-rocky-beach";
     opacity = 0.8;
     font = {
-      regular = {
-        name = "Comic Sans MS";
-        package = pkgs.corefonts;
-      };
+      # regular = {
+      #   name = "Comic Sans MS";
+      #   package = pkgs.corefonts;
+      # };
       mono = {
         name = "ComicShannsMono Nerd Font Mono";
         package = pkgs.nerd-fonts.comic-shanns-mono;
@@ -99,7 +99,9 @@
 
         idle = {
           enable = true;
-          timeout = 300;
+          timeout = 30000;
+        };
+      };
 
       management = {
         files.thunar.enable = true;
