@@ -109,7 +109,7 @@
 
     kscreenlocker = {
       appearance.showMediaControls = false;
-      appearance.wallpaper = "${config.wallpaper}";
+      appearance.wallpaper = config.stylix.image;
       autoLock = false;
       timeout = 0;
     };
@@ -237,20 +237,6 @@
         };
       }
       {
-        description = "Assign GitHub Desktop to Desktop 1";
-        match = {
-          window-class = {
-            value = "GitHub Desktop";
-            type = "substring";
-          };
-          window-types = [ "normal" ];
-        };
-        apply = {
-          desktops = "Desktop_1";
-          desktopsrule = "2";
-        };
-      }
-      {
         description = "Assign VSCodium to Desktop 2";
         match = {
           window-class = {
@@ -293,10 +279,10 @@
         };
       }
       {
-        description = "Assign Legcord to Desktop 4";
+        description = "Assign Equibop to Desktop 4";
         match = {
           window-class = {
-            value = "legcord";
+            value = "equibop";
             type = "substring";
           };
           window-types = [ "normal" ];
