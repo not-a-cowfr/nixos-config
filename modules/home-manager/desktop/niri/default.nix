@@ -14,7 +14,6 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
-    kdePackages.dolphin
     swaybg
     cliphist
     brightnessctl
@@ -24,6 +23,10 @@
 
     (writeShellScriptBin "clip-history-selector" (builtins.readFile ./clip-history.sh))
   ];
+
+  xdg.mimeApps.defaultApplications = {
+    "inode/directory" = "org.kde.dolphin.desktop";
+  };
 
   services.polkit-gnome.enable = true;
 

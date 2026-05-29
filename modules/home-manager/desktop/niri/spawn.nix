@@ -23,6 +23,6 @@
   ];
 
   switch-events = {
-    lid-close.action.spawn = [ "hyprlock" ];
+    # lid-close.action.spawn = [ "hyprlock" ];
   };
 }
