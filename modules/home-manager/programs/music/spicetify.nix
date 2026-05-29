@@ -23,7 +23,7 @@ in
     programs.spicetify = {
       enable = true;
 
-      theme = spicePkgs.themes.lucid;
+      theme = spicePkgs.themes.bloom;
 
       enabledExtensions = with spicePkgs.extensions; [
         keyboardShortcut
