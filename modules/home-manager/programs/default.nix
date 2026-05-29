@@ -6,6 +6,7 @@
     ./desktop
     ./hardware
     ./hypr
+    ./media
     ./music
     ./programming
     ./security

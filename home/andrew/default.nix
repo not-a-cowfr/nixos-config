@@ -94,6 +94,15 @@
         idle = {
           enable = true;
           timeout = 300;
+
+      media = {
+        video = {
+          davinci-resolve.enable = true;
+          obs-studio.enable = true;
+        };
+
+        text = {
+          obsidian.enable = true;
         };
       };
 
