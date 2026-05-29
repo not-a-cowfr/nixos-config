@@ -62,11 +62,10 @@
       hostname = configFile.computer.host;
 
       # function for easily defining new users
-      mkUser = username: fullName: {
-        ${username} = {
-          name = username;
-          inherit fullName;
-          avatar = ./assets/avatars/${username}/pfp.png;
+      mkUser = name: fullName: {
+        ${name} = {
+          inherit name fullName;
+          avatar = ./assets/avatars/${name}/pfp.png;
         };
       };
 

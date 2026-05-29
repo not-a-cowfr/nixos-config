@@ -18,4 +18,4 @@ See [docs](./docs/)
 
 - [x] have options that lets you easily pick and choose what software you want enabled for a user/host along with certain features for that software
 - [ ] make neovim config
-- [ ] make hyprlock look better
+- [x] make hyprlock look better
