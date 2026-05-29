@@ -184,20 +184,19 @@
   }) enabledUsers;
 
   # user avatar
-  # system.activationScripts.userAvatars.text =
-  # lib.concatStringsSep "\n" (
-  #   lib.mapAttrsToList (_: user: ''
-  #     mkdir -p /var/lib/AccountsService/{icons,users}
-  #     cp ${user.avatar} /var/lib/AccountsService/icons/${user.name}
+  system.activationScripts.userAvatars.text = lib.concatStringsSep "\n" (
+    lib.mapAttrsToList (_: user: ''
+      mkdir -p /var/lib/AccountsService/{icons,users}
+      cp ${user.avatar} /var/lib/AccountsService/icons/${user.name}
 
-  #     touch /var/lib/AccountsService/users/${user.name}
-  #     if ! grep -q "^Icon=" /var/lib/AccountsService/users/${user.name}; then
-  #       echo "[User]" >> /var/lib/AccountsService/users/${user.name}
-  #       echo "Icon=/var/lib/AccountsService/icons/${user.name}" \
-  #         >> /var/lib/AccountsService/users/${user.name}
-  #     fi
-  #   '') enabledUsers
-  # );
+      touch /var/lib/AccountsService/users/${user.name}
+      if ! grep -q "^Icon=" /var/lib/AccountsService/users/${user.name}; then
+        echo "[User]" >> /var/lib/AccountsService/users/${user.name}
+        echo "Icon=/var/lib/AccountsService/icons/${user.name}" \
+          >> /var/lib/AccountsService/users/${user.name}
+      fi
+    '') enabledUsers
+  );
 
   # security.sudo.wheelNeedsPassword = false;
 

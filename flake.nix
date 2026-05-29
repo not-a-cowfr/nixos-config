@@ -66,7 +66,7 @@
         ${username} = {
           name = username;
           inherit fullName;
-          avatar = ./assets/avatars/${username};
+          avatar = ./assets/avatars/${username}/pfp.png;
         };
       };
 
