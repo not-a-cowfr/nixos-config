@@ -1,9 +1,9 @@
 diff --git a/src/layout/tile.rs b/src/layout/tile.rs
-index bb0d61e8..1c83f800 100644
+index 86c7ebad..bfe40c71 100644
 --- a/src/layout/tile.rs
 +++ b/src/layout/tile.rs
-@@ -1220,48 +1220,6 @@ impl<W: LayoutElement> Tile<W> {
-             );
+@@ -1238,47 +1238,6 @@ impl<W: LayoutElement> Tile<W> {
+                 });
          }
  
 -        if fullscreen_progress > 0. {
@@ -13,11 +13,10 @@ index bb0d61e8..1c83f800 100644
 -            // animated corner radius.
 -            if fullscreen_progress < 1. && has_border_shader {
 -                let border_width = self.visual_border_width().unwrap_or(0.);
--                let radius = rules
--                    .geometry_corner_radius
--                    .map_or(CornerRadius::default(), |radius| {
--                        radius.expanded_by(border_width as f32)
--                    })
+-                let radius = self
+-                    .window
+-                    .geometry_corner_radius()
+-                    .expanded_by(border_width as f32)
 -                    .scaled_by(1. - expanded_progress as f32);
 -
 -                let size = self.fullscreen_backdrop.size();
@@ -50,4 +49,4 @@ index bb0d61e8..1c83f800 100644
 -
          if let Some(width) = self.visual_border_width() {
              self.border.render(
-                 renderer,
+                 ctx.renderer,

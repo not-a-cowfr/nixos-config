@@ -16,6 +16,7 @@
         patches = (old.patches or [ ]) ++ [
           ./transparent-fullscreen.patch
         ];
+        patchFlags = [ "-p1" "--forward" "--fuzz=3" ];
       });
     })
   ];
