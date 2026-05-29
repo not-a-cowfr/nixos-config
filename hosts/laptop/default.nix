@@ -55,5 +55,12 @@
 
   environment.corePackages = with pkgs; [ kdePackages.kio-admin ];
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-compute-runtime
+      intel-media-driver
+      ocl-icd
+    ];
   };
 }

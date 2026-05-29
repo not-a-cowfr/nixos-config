@@ -57,6 +57,11 @@
         delta.enable = true;
       };
 
+      games.kerbal-space-program = {
+        enable = true;
+        gameDir = "${config.home.homeDirectory}/Documents/Kerbal Space Program";
+      };
+
       desktop = {
         fuzzel.enable = true;
         waybar = {

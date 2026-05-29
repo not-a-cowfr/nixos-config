@@ -3,6 +3,7 @@
     ./browser
     ./chat
     ./cli
+    ./games
     ./desktop
     ./hardware
     ./hypr
