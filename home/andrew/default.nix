@@ -101,6 +101,11 @@
           enable = true;
           timeout = 300;
 
+      management = {
+        files.thunar.enable = true;
+        files.dolphin.enable = true;
+      };
+
       media = {
         video = {
           davinci-resolve.enable = true;

@@ -7,6 +7,7 @@
     ./desktop
     ./hardware
     ./hypr
+    ./management
     ./media
     ./music
     ./programming
