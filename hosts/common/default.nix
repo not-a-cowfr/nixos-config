@@ -178,6 +178,7 @@
       "openrazer"
       "libvirtd"
       "vboxusers"
+      "input"
     ];
     # id like to be able to set this via a hm option `features.programs.shells.default`
     shell = pkgs.nushell;
@@ -241,7 +242,7 @@
 
   environment.systemPackages = with pkgs; [
     efibootmgr
-    
+
   ];
 
   environment.shells = [ pkgs.nushell ];
