@@ -26,7 +26,7 @@
     };
 
     # addons
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/67e7cd63aee7be0b6d1d6e07e31fb3709f57fd54";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     # apps
     zen-browser = {

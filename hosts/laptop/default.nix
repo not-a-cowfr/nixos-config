@@ -31,7 +31,7 @@
   };
 
   # use cachyos rc kernel
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-rc;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
 
   # enable open razer
   # hardware.openrazer.enable = true;
