@@ -54,6 +54,7 @@
         };
         fzf.enable = true;
         starship.enable = true;
+        delta.enable = true;
       };
 
       desktop = {
